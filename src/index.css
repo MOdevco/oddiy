@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+.wrapper {
+    max-width: 1750px;
+    margin: 20px auto; 
+}
+.right:hover {
+    transform: translateX(5px);
+    transition: all 0.5s;
+}
+.borderRegister {
+    border-top: 20px solid black;
+}
+
+@media (max-width: 1000px) {
+    .cardResponsive {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 880px) {
+    .Responsive {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 550px) {
+    .card {
+        width: 100%;
+    }
+}
