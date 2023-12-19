@@ -33,7 +33,7 @@ const Navbar = () => {
         <Box width={'100%'} h={'52px'} bg={'#1D2026'} display={{base: 'none' , md: 'block'}}>
             <Box display={'flex'} color={'white'} gap={'40px'} fontSize={'18px'} justifyContent={'center'} alignItems={'center'} minH={'100%'}>
                 <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/'}> Bosh sahifa </NavLink>
-                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/'}> Biz haqimizda </NavLink>
+                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/about'}> Biz haqimizda </NavLink>
                 <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/news'}> Yangiliklar </NavLink>
                 <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/contact'}> Biz bilan a’loqa </NavLink>
             </Box>

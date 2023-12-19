@@ -12,6 +12,7 @@ import Contact from './pages/contact'
 import Aplication from './pages/aplication'
 import Courses from './pages/courses'
 import ReseptionCourse from './pages/reseptionCourse'
+import About from './pages/about'
 function App() {
 
 
@@ -34,6 +35,7 @@ function App() {
           <Route path='/news' element={<News />}></Route>
           <Route path='/contact' element={<Contact  />}></Route>
           <Route path='/aplication' element={<Aplication  />}></Route>
+          <Route path='/about' element={<About  />}></Route>
           <Route path='/reseptionCourse/:id' element={<ReseptionCourse />}></Route>
           <Route path='*' element={<NoteFount />}></Route>
         </Routes>
