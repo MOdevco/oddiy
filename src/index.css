@@ -16,8 +16,67 @@
 .borderRegister {
     border-top: 20px solid black;
 }
+.verify {
+    background-color: rgba(0, 0,0,0.6) !important;
+}
 
-@media (max-width: 1000px) {
+
+.CardEffect {
+    transition: 0.5s !important;
+}
+.CardEffect .btn {
+    display: none;
+    transition: all 0.5s;    
+    transform: translateY(40px);
+}
+.CardEffect:hover .cardImg {
+    filter: brightness(40%);
+    transition: all 0.5s;
+}
+.CardEffect:hover .btn {
+    display: block;
+}
+.cardFooter {
+    position: relative;
+    transition: all 0.5s !important;
+}
+.cardFooterBtn {
+    transform: translateY(80px);
+    display: flex;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+}
+.CardEffect:hover .cardFooterBtn {
+    height:70%;
+    transition: all 0.5s;
+    opacity: 1;
+}
+/* .cardBtn {
+    opacity: 0;
+    display: none;
+}
+.CardEffect:hover .cardFooterBox {
+    transition: all 0.5s;
+    display: none !important;
+}
+.CardEffect:hover .cardBtn {
+    display: block;
+    opacity: 1;
+    width: 100%;
+    transition: all 0.5s !important;
+} */
+/* .CardEffect:hover .cardFooterBox::after {
+    content: 'fdgfs';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    left: 0;
+    top: 0;
+    transition: all 0.5s !important;
+} */
+@media (max-width: 2000px) {
     .cardResponsive {
         flex-wrap: wrap;
     }

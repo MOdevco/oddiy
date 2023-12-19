@@ -3,16 +3,19 @@ import React from 'react'
 import { Work } from '../../assets'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { color } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const EnterWork = () => {
   return (
-   <Box bg={'#F5F7FA'} width={'100%'} position={'relative'} top={'-200px'} minHeight={'50vh'} p={'20px'}>
+   <Box bg={'#F5F7FA'} width={'100%'} minHeight={'50vh'} p={'20px'}>
         <Box className='wrapper' display={'flex'} justifyContent={'center'} alignItems={'center'}>
             <Box className='Responsive' display={'flex'} alignItems={'center'} gap={'20px'} justifyContent={'space-evenly'} width={{base: '100%' , md: '75%'}}>
                 <Box className='bgImg' width={'100%'} display={'flex'} flexDirection={'column'} alignItems={'self-start'} gap={'20px'} p={'20px'} color={'white'}  bg={'#564FFD'}>
                     <Heading>Malumotlar To’iq holda</Heading>
                     <Text maxW={'400px'}>Agarda siz shartlarga to’g’ri kelgan holatda malumotlaringiz yetarli bo’lsa bizga arizani berishingiz mumkin bo’ladi.</Text>
-                    <Button _hover={{bg: ''}} bg={'white'}  display={'flex'} alignItems={'center'} gap={2 } color={'#564FFD'}>Ariza Qoldirish <FaArrowRightLong fontSize={'20px'} className='right' /></Button>
+                    <Link to={'/aplication'}>
+                        <Button _hover={{bg: ''}} bg={'white'}  display={'flex'} alignItems={'center'} gap={2 } color={'#564FFD'}>Ariza Qoldirish       <FaArrowRightLong fontSize={'20px'} className='right' /></Button>
+                    </Link>
                 </Box>
 
 

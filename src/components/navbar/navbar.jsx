@@ -32,37 +32,16 @@ const Navbar = () => {
         {/* for top navigation */}
         <Box width={'100%'} h={'52px'} bg={'#1D2026'} display={{base: 'none' , md: 'block'}}>
             <Box display={'flex'} color={'white'} gap={'40px'} fontSize={'18px'} justifyContent={'center'} alignItems={'center'} minH={'100%'}>
-                <NavLink to={'/'}> Bosh sahifa </NavLink>
-                <NavLink> Kurslar </NavLink>
-                <NavLink> Biz haqimizda </NavLink>
-                <NavLink> Biz bilan a’loqa </NavLink>
+                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/'}> Bosh sahifa </NavLink>
+                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/'}> Biz haqimizda </NavLink>
+                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/news'}> Yangiliklar </NavLink>
+                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/contact'}> Biz bilan a’loqa </NavLink>
             </Box>
         </Box>
 
          {/*for logo  */}
         <Box className='wrapper' display={'flex'} alignItems={'center'} justifyContent={'space-between'} >
-          <Box display={'flex'} alignItems={'center'} gap={'50px'}>
-            <Link to={'/'}>
-              <Box display={'flex'} alignItems={'flex-start'} flexDirection={'column'}>
-                <Image src={Logo} width={'250px'}></Image>
-               
-              </Box>
-            </Link>
-          </Box>
-          <Box>
-            <Heading  fontWeight={'bold'} fontSize={'40px'}>Academy</Heading>
-          </Box>
-
-          <Box  display={{base: 'none' , md: 'block'}}> 
-            <Link to={'/register'}>
-              <Button width={'182px'} h={'50px'} bg={'#564FFD'} _hover={{bg: '#164FFD'}} color={'white'}>
-                Ro'yhatdan O'tish
-              </Button>
-            </Link>
-          </Box>
-
-
-          <Box fontSize={'30px'} pr={5} display={{base: 'block' , md: 'none'}}>
+          <Box fontSize={'30px'} pr={5} display={{base: 'block' , md: 'none'}} position={'absolute'} right={0}>
             <HamburgerIcon ref={btnRef} colorScheme='teal' onClick={onOpen} />
               <Drawer
                 isOpen={isOpen}
@@ -78,9 +57,9 @@ const Navbar = () => {
                   <DrawerBody>
                      <Box display={'flex'} flexDirection={'column'}  color={'black'} gap={'40px'} fontSize={'18px'} justifyContent={'flex-start'} alignItems={'flex-start'} minH={'100%'}>
                         <NavLink to={'/'}> Bosh sahifa </NavLink>
-                        <NavLink> Kurslar </NavLink>
                         <NavLink> Biz haqimizda </NavLink>
-                        <NavLink> Biz bilan a’loqa </NavLink>
+                        <NavLink to={'/news'}> Yangiliklar </NavLink>
+                        <NavLink to={'/contact'}> Biz bilan a’loqa </NavLink>
                     </Box>
                   </DrawerBody>
 

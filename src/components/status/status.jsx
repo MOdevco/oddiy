@@ -7,27 +7,27 @@ const Status = () => {
    <Box display={'flex'} justifyContent={'center'}  alignItems={'center'} minHeight={'40vh'}>
         <Box display={'flex'} flexDirection={'column'} alignItems={'center'} gap={5}>
             <Box>
-                <Heading>Bizning holat</Heading>
+                <Heading>Barcha kurs kategoriyalar</Heading>
             </Box>
 
 
             <Box display={'flex'} justifyContent={'space-between'} flexWrap={'wrap'} gap={10}> 
                 <Box display={'flex'} p={'15px'} gap={5}  width={{base: '100%' , md: '312px'}} bg={'#EBEBFF'} alignItems={'center'}>
                     <Image width={'65px'} src={Img1}></Image>
-                    <Text >Qatdiy o’qish holati</Text>
+                    <Text >FRONTEND</Text>
                 </Box>
                 <Box display={'flex'} p={'15px'} gap={5}  width={{base: '100%' , md: '312px'}} bg={'#E0F7E1'} alignItems={'center'}>
                     <Image width={'65px'} src={Img2}></Image>
-                    <Text color={'black'}>Biz bilan ishlash</Text>
+                    <Text color={'black'}>BACKEND</Text>
                 </Box>
                 <Box display={'flex'} p={'15px'} gap={5}  width={{base: '100%' , md: '312px'}} bg={'#FFF2E5'} alignItems={'center'}>
                     <Image width={'65px'} src={Img3}></Image>
-                    <Text >Qulay narxlar</Text>
+                    <Text>MOBILE</Text>
                 </Box>
-                <Box display={'flex'} p={'15px'} gap={5}  width={{base: '100%' , md: '312px'}} bg={'#FFF0F0'} alignItems={'center'}>
+                {/* <Box display={'flex'} p={'15px'} gap={5}  width={{base: '100%' , md: '312px'}} bg={'#FFF0F0'} alignItems={'center'}>
                     <Image width={'65px'} src={Img4}></Image>
                     <Text >Mukammal o’sish</Text>
-                </Box>
+                </Box> */}
             </Box>
         </Box>
    </Box>

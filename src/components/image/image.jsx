@@ -1,9 +1,10 @@
 import { Box } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
+import { api } from '../../api/api'
 const ImageGet = ({id}) => {
   return (
     <Box>
-        <Image src={`http://192.168.158.66:8080/api/image/?id=${id}`} width={'100%'} ></Image>
+        <Image src={`${api}api/image/?id=${id}`} width={'100%'} height={'300'} ></Image>
     </Box>
   )
 }
