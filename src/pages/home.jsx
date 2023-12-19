@@ -8,6 +8,7 @@ import FutureAllCourse from '../components/futureAllCourse/futureAllCourse'
 import AllMentors from '../components/allMentors/allMentors'
 import axios from 'axios'
 import { api } from '../api/api'
+import TopSwiper from '../components/TopSwiper/topSwiper'
 
 const Home = () => {
   const [data , setData] = useState([])
@@ -30,7 +31,11 @@ const Home = () => {
 }, [])
   return (
    <Box>
-      <Box display={'flex'}   justifyContent={'center'} alignContent={'center'}  width={'100%'}>
+      <Box pt={5}>
+        <TopSwiper />
+      </Box>
+
+      <Box display={'flex'}  justifyContent={'center'} alignContent={'center'}  width={'100%'}>
         <TopContent />
       </Box>
 
