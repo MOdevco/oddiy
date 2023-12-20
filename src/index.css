@@ -33,6 +33,9 @@
     filter: brightness(40%);
     transition: all 0.5s;
 }
+.slider img {
+    filter: brightness(40%);
+}
 .CardEffect:hover .btn {
     display: block;
 }

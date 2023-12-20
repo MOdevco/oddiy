@@ -30,18 +30,17 @@ const Navbar = () => {
     <Box position={'fixed'} w={'100%'} zIndex={'100'} left={0} top={0}>
       <Box>
         {/* for top navigation */}
-        <Box width={'100%'}  h={'52px'} bg={'#1D2026'} display={{base: 'none' , md: 'block'}}>
-            <Box display={'flex'} color={'white'} gap={'40px'} fontSize={'18px'} justifyContent={'center'} alignItems={'center'} minH={'100%'}>
+        <Box width={'100%'}  h={'52px'} bg={'#1D2026'} display={{base: 'none' , md: 'block'}} >
+            <Box display={'flex'} color={'white'} gap={'40px'} fontSize={'18px'} justifyContent={'flex-start'} pl={20} alignItems={'center'} minH={'100%'}>
                 <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/'}> Bosh sahifa </NavLink>
                 <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/about'}> Biz haqimizda </NavLink>
-                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/news'}> Yangiliklar </NavLink>
                 <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/contact'}> Biz bilan a’loqa </NavLink>
             </Box>
         </Box>
 
          {/*for logo  */}
-        <Box className='wrapper' display={'flex'} alignItems={'center'} justifyContent={'space-between'} >
-          <Box fontSize={'30px'} pr={5} display={{base: 'block' , md: 'none'}} position={'absolute'} right={0}>
+        <Box className='wrapper' display={'flex'} alignItems={'center'} justifyContent={'space-between'} pt={1} pb={2}  h={'5vh'}>
+          <Box fontSize={'30px'} pr={5} display={{base: 'block' , md: 'none'}} alignItems={'flex-end'} justifyContent={'flex-end'} position={'absolute'} right={0} bg={'white'} width={'100%'}>
             <HamburgerIcon ref={btnRef} colorScheme='teal' onClick={onOpen} />
               <Drawer
                 isOpen={isOpen}
@@ -58,7 +57,6 @@ const Navbar = () => {
                      <Box display={'flex'} flexDirection={'column'}  color={'black'} gap={'40px'} fontSize={'18px'} justifyContent={'flex-start'} alignItems={'flex-start'} minH={'100%'}>
                         <NavLink to={'/'}> Bosh sahifa </NavLink>
                         <NavLink> Biz haqimizda </NavLink>
-                        <NavLink to={'/news'}> Yangiliklar </NavLink>
                         <NavLink to={'/contact'}> Biz bilan a’loqa </NavLink>
                     </Box>
                   </DrawerBody>

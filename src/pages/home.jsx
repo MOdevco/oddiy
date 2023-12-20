@@ -13,6 +13,7 @@ import TopSwiper from '../components/TopSwiper/topSwiper'
 const Home = () => {
   const [data , setData] = useState([])
   const [data2 , setData2] = useState([])
+  const [loading , setLoading] = useState(true)
   const url = `${api}api/course/with-prices`
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const Home = () => {
           }
       }).then((res) => {
           setData(res.data.data)
+          setLoading(false)
       })
   } ,[url])
 
@@ -44,15 +46,15 @@ const Home = () => {
       </Box>
 
       <Box>
-        <AllCourse data={data} />
+        <AllCourse data={data} loading={loading} />
       </Box>
 
       <Box>
-        <FutureAllCourse  data={data} />
+        <FutureAllCourse  data={data} loading={loading} />
       </Box>
 
       <Box>
-        <AllMentors />
+        <AllMentors  loading={loading} />
       </Box>
 
 

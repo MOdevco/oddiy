@@ -7,10 +7,8 @@ import Register from './pages/register'
 import NoteFount from './pages/404'
 import AllRegiste from './components/allRegister/allRegiste'
 import { useEffect } from 'react'
-import News from './pages/news'
 import Contact from './pages/contact'
 import Aplication from './pages/aplication'
-import Courses from './pages/courses'
 import ReseptionCourse from './pages/reseptionCourse'
 import About from './pages/about'
 function App() {
@@ -22,7 +20,7 @@ function App() {
   return (
     <Box >
       {/* for navbar */}
-      <Box mb={10}>
+      <Box mb={20}>
         <Navbar />
       </Box>
 
@@ -32,7 +30,6 @@ function App() {
           <Route path='/' element={<Home />}></Route>
           <Route path='/register' element={<Register />}></Route>
           <Route path='/allRegister' element={<AllRegiste />}></Route>
-          <Route path='/news' element={<News />}></Route>
           <Route path='/contact' element={<Contact  />}></Route>
           <Route path='/aplication' element={<Aplication  />}></Route>
           <Route path='/about' element={<About  />}></Route>
