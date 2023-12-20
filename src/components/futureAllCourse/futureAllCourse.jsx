@@ -1,12 +1,12 @@
-import { Avatar, Box, Button, Heading, Image, Stack, Text } from '@chakra-ui/react'
-import React, { useEffect, useState } from 'react'
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Avatar, Box,  Heading, Stack, Text } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Badge } from '@chakra-ui/react'
 import { IoMan } from "react-icons/io5";
-import axios from 'axios';
 import { api } from '../../api/api';
 import ImageGet from '../image/image';
-const FutureAllCourse = ({data}) => {
+import groovyWalkAnimation2 from "../../Animation - 1703051368917.json" 
+import Lottie from 'lottie-react';
+const FutureAllCourse = ({data , loading}) => {
    
   return (
     <Box className='wrapper' minH={'100%'}>
@@ -14,8 +14,12 @@ const FutureAllCourse = ({data}) => {
             <Box>
                 <Heading>Kelajakdagi barcha kurslar</Heading>
             </Box>
-
-            <Box display={'flex'} justifyContent={'space-between'} flexWrap={'wrap'} gap={10}>
+            {loading && <Box width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
+                <Box width={'200px'}>
+                 <Lottie animationData={groovyWalkAnimation2} loop={true} />
+                </Box>
+            </Box>}
+            {!loading && <Box display={'flex'} justifyContent={'space-between'} flexWrap={'wrap'} gap={10}>
                 {data && data.map((item , i) => {
                     if(item.course.status === false)
                         return (
@@ -56,7 +60,7 @@ const FutureAllCourse = ({data}) => {
                         )
                 })}
             
-            </Box>
+            </Box>}
         </Box>
     </Box>
   )

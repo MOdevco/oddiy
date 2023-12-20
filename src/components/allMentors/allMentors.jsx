@@ -4,7 +4,9 @@ import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 import axios from 'axios'
 import { api } from '../../api/api'
 import ImageGet from '../image/image'
-const AllMentors = () => {
+import groovyWalkAnimation2 from "../../Animation - 1703051368917.json" 
+import Lottie from 'lottie-react'
+const AllMentors = ({loading}) => {
     const [data , setData] = useState([])
 
     useEffect(() => {
@@ -24,7 +26,12 @@ const AllMentors = () => {
                 <Heading>Barcha mentorlar</Heading>
             </Box>
 
-            <Box display={'flex'} justifyContent={{base: 'center' , md: 'flex-start'}} alignItems={'center'} gap={10} flexWrap={'wrap'}>
+            {loading && <Box width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
+                <Box width={'200px'}>
+                 <Lottie animationData={groovyWalkAnimation2} loop={true} />
+                </Box>
+            </Box>}
+           {!loading && <Box display={'flex'} justifyContent={{base: 'center' , md: 'flex-start'}} alignItems={'center'} gap={10} flexWrap={'wrap'}>
                 {data.map((item,i) => (
                     <Card maxW='sm'>
                         <CardBody>
@@ -48,7 +55,7 @@ const AllMentors = () => {
                         </CardFooter>
                     </Card>
                 ))}
-            </Box>
+            </Box>}
 
         </Box>
     </Box>

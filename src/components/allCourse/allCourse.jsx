@@ -16,12 +16,15 @@ import {
     FormControl,
     FormLabel,
   } from '@chakra-ui/react'
+import { Spinner } from '@chakra-ui/react'
 import { Textarea } from '@chakra-ui/react'
 import axios from 'axios'
 import Lottie, { useLottie } from 'lottie-react'
 import groovyWalkAnimation from "../../Animation - 1702976632892.json" 
+import groovyWalkAnimation2 from "../../Animation - 1703051368917.json" 
 import { IoMdClose } from "react-icons/io";
-const AllCourse = ({data}) => {
+import { Logo } from '../../assets'
+const AllCourse = ({data , loading}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [courseId , setCourseId] = useState('')
     const [value , setValue] = useState('')
@@ -35,12 +38,6 @@ const AllCourse = ({data}) => {
     const s = date.getSeconds()
     const ms = date.getMilliseconds()
     const [vr , setVr] = useState(false)
-    // const options = {
-    //     animationData: groovyWalkAnimation,
-    //     loop: true
-    // };
-    // const { View } = useLottie(options);
-
 
     const handleSubmit = () => {
         axios.post(`${api}api/reception/new`,{
@@ -55,20 +52,24 @@ const AllCourse = ({data}) => {
             setResponse(res.data.message)
             onClose()
             setVr(true)
-            // setTimeout(() => {
-            //     setVr(false)
-            // },3000)
+            
         })
     }
 
   return (
-    <Box width={'100%'} height={'100%'} p={20} bg={'#F0F2F5'}>
-        <Box className='wrapper' display={'flex'} flexDirection={'column'} alignItems={'center'} justifyContent={'center'}>
-            <Box>
+    <Box width={'100%'}  p={20} bg={'#F0F2F5'} display={'flex'}>
+        <Box className='wrapper' >
+            <Box textAlign={'center'} >
                 <Heading>Bizdagi mavjud barcha kurslar</Heading>
             </Box>
 
-           {vr && <Box position={'fixed'} width={'100%'} zIndex={10}display={'flex'} alignItems={'center'} height={'100vh'} top={0}justifyContent={'center'}  left={0} className='verify'> 
+           {loading && <Box width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
+                <Box width={'200px'}>
+                 <Lottie animationData={groovyWalkAnimation2} loop={true} />
+                </Box>
+            </Box>}
+
+           {vr && <Box position={'fixed'} width={'100%'} zIndex={10}display={'flex'} alignItems={'center'} height={'100vh'} top={0} justifyContent={'center'}  left={0} className='verify'> 
                 <Box  width={'400px'} h={'400px'} p={10} textAlign={'center'} fontWeight={'500'} fontSize={'18px'} bg={'white'} position={'relative'} rounded={'8px'}>
                     <Box position={'absolute'} onClick={() => {
                         setVr(false)
@@ -80,12 +81,13 @@ const AllCourse = ({data}) => {
                 </Box>
             </Box>}
 
-            <Box pt={10} display={'flex'} flexWrap={'wrap'} justifyContent={'center'} width={'100%'} gap={{base: 20 , md: 10}} >
-                {data.map((item , i) => {
+           {!loading && <Box pt={10}  width={'100%'} gap={20} display={'flex'} flexWrap={{base: 'wrap', md: 'wrap' , xl: 'nowrap'}} justifyContent={{base: 'center'}}>
+                {data && data.map((item , i) => {
+                    console.log(item.mentor)
                     if(item.course.status === true) 
                         return (
                         <Box>
-                            <Card maxW='sm' cursor={'pointer'} className='CardEffect' width={'100%'} position={'relative'}>
+                            <Card maxW='sm' cursor={'pointer'} className='CardEffect' height={'100%'} width={'100%'} position={'relative'}>
                                 <CardBody position={'relative'}>
                                     <Image src={`${api}api/image/?id=${item.course.previewPhoto.id}`}
                                     className='cardImg'
@@ -117,12 +119,12 @@ const AllCourse = ({data}) => {
                                 <CardFooter position={'relative'} p={0}>
                                     <Box display={'flex'} alignItems={'center'} width={'100%'} gap={5} p={5}>
                                         <Avatar src={`${api}api/image/?id=${item.course.courseType.photo.id}`} />
-                                        <Text fontSize={'20px'} fontWeight={'500'}>Shahzodbek Komilov</Text>
+                                        <Text fontSize={'20px'} fontWeight={'500'}>{item.mentor === null ? "O'qituvchi belgilanmagan" : `${item.mentor.employee.face.firstname} ${item.mentor.employee.face.lastname}` } </Text>
                                     </Box>
                                     <Box onClick={() => {
                                         onOpen()
                                         setCourseId(item.course.id)
-                                    }} position={'absolute'} borderBottomLeftRadius={'8px'}borderBottomRightRadius={'8px'} className='cardFooterBtn' lang='0' top={0} width={'100%'} h={'0%'} bg={'orange'}>
+                                    }} position={'absolute'} borderBottomLeftRadius={'8px'}borderBottomRightRadius={'8px'} className='cardFooterBtn' lang='0' top={0} width={'100%'} h={'0%'} bg={'black'}>
                                         <Heading fontSize={'20px'} color={'white'}>Kursga yozilish</Heading>
                                        { <Modal isOpen={isOpen} onClose={onClose}>
                                             <ModalOverlay />
@@ -130,13 +132,14 @@ const AllCourse = ({data}) => {
                                             <ModalHeader>Kursga yozilish</ModalHeader>
                                             <ModalCloseButton />
                                             <ModalBody>
-                                                <FormControl>
+                                                <Image src={Logo}></Image>
+                                                <FormControl mt={5}>
                                                     <FormLabel>Xabar qoldiring (majburi emas)</FormLabel>
                                                     <Textarea onChange={(e) => setValue(e.target.value)} placeholder={'xabar...'} />
                                                 </FormControl>
                                             </ModalBody>
                                             <ModalFooter>
-                                                <Button  width={'100%'} colorScheme='orange' mr={3} onClick={() => {
+                                                <Button  width={'100%'} bg={'#000'} color={'white'} h={'50px'} _hover={{bg: '#001'}} mr={3} onClick={() => {
                                                     handleSubmit()
                                                 }}>
                                                     Tasdiqlash
@@ -150,7 +153,7 @@ const AllCourse = ({data}) => {
                     </Box>
                         )
                 })}
-            </Box>
+            </Box>}
         </Box>
     </Box>
   )
