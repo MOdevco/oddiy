@@ -7,7 +7,7 @@
 
 .wrapper {
     max-width: 1750px;
-    margin: 20px auto; 
+    margin: 0px auto; 
 }
 .right:hover {
     transform: translateX(5px);
@@ -93,3 +93,30 @@
         width: 100%;
     }
 }
+
+
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

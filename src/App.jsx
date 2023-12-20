@@ -22,7 +22,7 @@ function App() {
   return (
     <Box >
       {/* for navbar */}
-      <Box>
+      <Box mb={10}>
         <Navbar />
       </Box>
 

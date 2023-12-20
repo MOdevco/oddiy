@@ -27,10 +27,10 @@ const Navbar = () => {
   const btnRef = useRef()
 
   return (
-    <Box>
+    <Box position={'fixed'} w={'100%'} zIndex={'100'} left={0} top={0}>
       <Box>
         {/* for top navigation */}
-        <Box width={'100%'} h={'52px'} bg={'#1D2026'} display={{base: 'none' , md: 'block'}}>
+        <Box width={'100%'}  h={'52px'} bg={'#1D2026'} display={{base: 'none' , md: 'block'}}>
             <Box display={'flex'} color={'white'} gap={'40px'} fontSize={'18px'} justifyContent={'center'} alignItems={'center'} minH={'100%'}>
                 <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/'}> Bosh sahifa </NavLink>
                 <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/about'}> Biz haqimizda </NavLink>
