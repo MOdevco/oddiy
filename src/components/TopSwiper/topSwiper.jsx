@@ -28,13 +28,13 @@ const TopSwiper = () => {
     console.log(data);
   return (
     <Box w={'100%'} h={'60vh'} >
-        {!loading && <Box width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
+        {loading && <Box width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
           <Box width={'200px'}>
            <Lottie animationData={groovyWalkAnimation2} loop={true} />
           </Box>
         </Box>}
-      <Box width={'100%'} h={'100%'} bg={'black'} className='swipperBG'>
-        {loading && <Swiper
+      <Box width={'100%'} h={'100%'}  >
+        {!loading && <Swiper
           spaceBetween={30}
           centeredSlides={true}
           autoplay={{

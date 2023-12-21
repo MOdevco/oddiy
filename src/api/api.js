@@ -1,3 +1,3 @@
-export const api = 'http://192.168.43.66:8080/'
+export const api = 'http://192.168.9.66:8080/'
 
 localStorage.setItem('token' , 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5OTg5MDAwMDAwMDAiLCJpYXQiOjE3MDI5NzUyMDksImV4cCI6MTcwNTU2NzIwOX0.kT4RJWv22e2Yj8fmN2nj9sO6XxQL_kl4LDDPN40pD8WJ7edaxfN_9ExId2Q4O26pKB33xHOyKSMVfMMag37QBQ')
