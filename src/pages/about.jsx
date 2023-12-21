@@ -69,15 +69,13 @@ const modal = (id) => {
       {/* for woman and man  */}
       <Box display='flex' alignItems='flex-start' mb={20} p={5} pb={20} justifyContent='space-around' bg='#FFEEE8' gap={20}  flexDirection={'column'} mt={{md:'0', base:'40px'}} >
         <Text color='#FF6636' fontSize='30px' fontWeight='500' >TASDIQLANGAN LITSENZIYA</Text>
-        <Box display={'flex'}>
+        <Box display={'flex'} pl={20}>
           {data &&  data.licensePhotos.map((item ,i) => (
-            <Box position={'relative'} zIndex={9}>
-              <Image onClick={() => modal(item.id)} transform={i == 0 ? 'rotate(-20deg)' : i == 2 ? 'rotate(20deg)' : ''} width={'300px'} height={'500px'} src={`${api}api/image/?id=${item.id}`}></Image>
+            <Box position={'relative'} zIndex={10}>
+              <Image onClick={() => modal(item.id)} transform={i == 0 ? 'rotate(-20deg)'  : i == 2 ? 'rotate(20deg)' : ''} width={'300px'} height={'500px'} src={`${api}api/image/?id=${item.id}`} zIndex={i == 0 && 10}></Image>
             </Box>
           ))}
-          <Box position={'relative'} zIndex={10}>
-            <Text w={'400px'}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tenetur ea, odio nesciunt perferendis praesentium ex. Optio iusto itaque officia eius! Error iusto, voluptatibus animi veniam deleniti est officia incidunt accusamus? Ducimus quo inventore, ipsa eveniet quibusdam itaque iure quod explicabo placeat quisquam iusto dolorum at architecto, doloremque ut sequi consequatur provident sit, accusantium dolorem. Nulla nisi, libero fuga facere ipsa consequuntur dolorem ducimus non magni sunt laboriosam dicta facilis eveniet aperiam iste a ratione eaque obcaecati nam consequatur vitae aspernatur. A ducimus nobis qui tempora ab odio sequi, deserunt fugit mollitia quibusdam quos quasi fugiat nam consectetur neque? Totam.</Text>
-          </Box>
+           
         
 
         <Modal onClose={onClose} size={size} isOpen={isOpen}>
