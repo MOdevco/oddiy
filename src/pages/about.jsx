@@ -1,6 +1,15 @@
-import { Box, Button, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Image, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { manku } from '../assets'
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
 import { FaArrowRight } from "react-icons/fa6";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import axios from 'axios';
@@ -8,8 +17,17 @@ import { api } from '../api/api';
 import ImageGet from '../components/image/image';
 
 export default function About() {
+  const [modalImg, setModalImg] = useState('')
   const [data , setData] = useState('')
-  console.log(data);
+  // console.log(data);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [size, setSize] = React.useState('md')
+
+  const handleSizeClick = (newSize) => {
+    setSize(newSize)
+    onOpen()
+  }
+
 
 
   useEffect(() => {
@@ -25,9 +43,15 @@ export default function About() {
 //   useEffect(() => {
 //     window.scroll(0,0)
 // } ,[])
+const modal = (id) => {
+    setModalImg(`${api}api/image/?id=${id}`)
+    handleSizeClick('full')
+}
+ 
+
   return (
     <Box >
-      <Box minHeight='70vh' display='flex' alignItems='center' justifyContent='space-around' flexDirection={{md:'unset', base:'column'}} >
+      <Box minHeight='70vh' display='flex' w={'100%'} alignItems='center' justifyContent='space-around' flexDirection={{md:'unset', base:'column'}} >
         {/* for mans picture  */}
         <Box>
           <Text color='#E9EAF0' fontSize='80px'>2023 - YIL</Text>
@@ -45,12 +69,28 @@ export default function About() {
       {/* for woman and man  */}
       <Box display='flex' alignItems='flex-start' mb={20} p={5} pb={20} justifyContent='space-around' bg='#FFEEE8' gap={20}  flexDirection={'column'} mt={{md:'0', base:'40px'}} >
         <Text color='#FF6636' fontSize='30px' fontWeight='500' >TASDIQLANGAN LITSENZIYA</Text>
-        <Box display={'flex'} gap={10}>
+        <Box display={'flex'}>
           {data &&  data.licensePhotos.map((item ,i) => (
-            <Box >
-              <Image width={'300px'} height={'500px'} src={`${api}api/image/?id=${item.id}`}></Image>
+            <Box position={'relative'} zIndex={9}>
+              <Image onClick={() => modal(item.id)} transform={i == 0 ? 'rotate(-20deg)' : i == 2 ? 'rotate(20deg)' : ''} width={'300px'} height={'500px'} src={`${api}api/image/?id=${item.id}`}></Image>
             </Box>
           ))}
+          <Box position={'relative'} zIndex={10}>
+            <Text w={'400px'}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo tenetur ea, odio nesciunt perferendis praesentium ex. Optio iusto itaque officia eius! Error iusto, voluptatibus animi veniam deleniti est officia incidunt accusamus? Ducimus quo inventore, ipsa eveniet quibusdam itaque iure quod explicabo placeat quisquam iusto dolorum at architecto, doloremque ut sequi consequatur provident sit, accusantium dolorem. Nulla nisi, libero fuga facere ipsa consequuntur dolorem ducimus non magni sunt laboriosam dicta facilis eveniet aperiam iste a ratione eaque obcaecati nam consequatur vitae aspernatur. A ducimus nobis qui tempora ab odio sequi, deserunt fugit mollitia quibusdam quos quasi fugiat nam consectetur neque? Totam.</Text>
+          </Box>
+        
+
+        <Modal onClose={onClose} size={size} isOpen={isOpen}>
+          <ModalOverlay bg={'transparent'}/>
+          <ModalContent>
+            <ModalCloseButton fontSize={'30px'} />
+            <ModalBody px={'20px'}>
+              <Image w={'100%'} m={'auto'} h={'95vh'} src={modalImg} />
+            </ModalBody>
+            <ModalFooter>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
         </Box>
       </Box>
       {/* for img  */}
