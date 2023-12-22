@@ -22,6 +22,8 @@ const AllRegiste = () => {
             tg: data.tg
         } ,{
             headers: {
+                "ngrok-skip-browser-warning": true,
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         } )

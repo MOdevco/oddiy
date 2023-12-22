@@ -1,6 +1,5 @@
 import { Box, Button, Image, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import { manku } from '../assets'
 import {
   Modal,
   ModalOverlay,
@@ -16,10 +15,18 @@ import axios from 'axios';
 import { api } from '../api/api';
 import ImageGet from '../components/image/image';
 
+// import React, { useRef} from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import { FreeMode, Pagination } from 'swiper/modules';
+import { Autoplay,  Navigation } from "swiper/modules";
+import '../../src/about.css'
 export default function About() {
   const [modalImg, setModalImg] = useState('')
   const [data , setData] = useState('')
-  // console.log(data);
+  console.log(data);
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [size, setSize] = React.useState('md')
 
@@ -33,6 +40,8 @@ export default function About() {
   useEffect(() => {
     axios.get(`${api}api/about-us/` , {
       headers: {
+        "ngrok-skip-browser-warning": true,
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     }).then((res) => {
@@ -63,16 +72,37 @@ const modal = (id) => {
         </Box>
       </Box>
 
-      <Box minHeight={'30vh'}>
+      <Box minHeight={'30vh'} display={'flex'} py={10} alignItems={'center'} justifyContent={'center '}>
 
+        {data && data.additionalPhoto.map((pre) => (
+          <Swiper
+
+            slidesPerView={3}
+            spaceBetween={30}
+            freeMode={true}
+            modules={[Autoplay, Pagination, Navigation]} 
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            className="mySwiper"
+
+          >
+            <SwiperSlide>
+              <Image  src={`${api}api/image/?id=${pre.id}`} ></Image>
+            </SwiperSlide>
+          </Swiper>
+        ))}
       </Box>
+
+
       {/* for woman and man  */}
       <Box display='flex' alignItems='flex-start' mb={20} p={5} pb={20} justifyContent='space-around' bg='#FFEEE8' gap={20}  flexDirection={'column'} mt={{md:'0', base:'40px'}} >
         <Text color='#FF6636' fontSize='30px' fontWeight='500' >TASDIQLANGAN LITSENZIYA</Text>
-        <Box display={'flex'} pl={20}>
+        <Box display={'flex'} pl={20} gap={5}>
           {data &&  data.licensePhotos.map((item ,i) => (
-            <Box position={'relative'} zIndex={10}>
-              <Image onClick={() => modal(item.id)} transform={i == 0 ? 'rotate(-20deg)'  : i == 2 ? 'rotate(20deg)' : ''} width={'300px'} height={'500px'} src={`${api}api/image/?id=${item.id}`} zIndex={i == 0 && 10}></Image>
+            <Box >
+              <Image onClick={() => modal(item.id)}  width={'300px'} height={'500px'} src={`${api}api/image/?id=${item.id}`} ></Image>
             </Box>
           ))}
            

@@ -24,7 +24,8 @@ import groovyWalkAnimation from "../../Animation - 1702976632892.json"
 import groovyWalkAnimation2 from "../../Animation - 1703051368917.json" 
 import { IoMdClose } from "react-icons/io";
 import { Logo } from '../../assets'
-const AllCourse = ({data , loading}) => {
+import { Link } from 'react-router-dom'
+const AllCourse = ({data , loading , setDataVal}) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [courseId , setCourseId] = useState('')
     const [value , setValue] = useState('')
@@ -46,6 +47,8 @@ const AllCourse = ({data , loading}) => {
             "receptionNumber": `${day}${mon}${year}${h}${m}${s}${ms}`
         },{
             headers: {
+                "ngrok-skip-browser-warning": true,
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then((res) => {
@@ -83,7 +86,6 @@ const AllCourse = ({data , loading}) => {
 
            {!loading && <Box pt={10}  width={'100%'} gap={20} display={'flex'} flexWrap={{base: 'wrap', md: 'wrap' , xl: 'nowrap'}} justifyContent={{base: 'center'}}>
                 {data && data.map((item , i) => {
-                    console.log(item.mentor)
                     if(item.course.status === true) 
                         return (
                         <Box>
@@ -94,7 +96,11 @@ const AllCourse = ({data , loading}) => {
                                     width={'100%'}
                                     h={'250px'}
                                     />
-                                    <Button bg={'none'} _hover={{bg: ''}} border={'1px'} borderColor={'white'} color={'white'} position={'absolute'}top={20} className='btn' width={{base: '100px' , md: '250px'}} h={'50px'} left={{base: '110px' , md: '70px'}} >Batafsil</Button>
+                                        <Button onClick={() => setDataVal(item.course)} bg={'none'} _hover={{bg: ''}} border={'1px'} borderColor={'white'} color={'white'} position={'absolute'}top={20} className='btn' width={{base: '100px' , md: '250px'}} h={'50px'} left={{base: '110px' , md: '70px'}} >
+                                            <Link to={'/fullDesc'}>
+                                                Batafsil
+                                            </Link>
+                                        </Button>
                                     <Stack mt='6' spacing='3'>
                                     <Box display={'flex'} justifyContent={'space-between'}>
                                         <Badge textAlign={'center'} width={'40%'} height={'100%'} variant='outline' colorScheme='green'>

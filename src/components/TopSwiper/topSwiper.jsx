@@ -18,6 +18,8 @@ const TopSwiper = () => {
     useEffect(() => {
         axios.get(`${api}api/news/`,{
             headers: {
+              "ngrok-skip-browser-warning": true,
+              "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
         }).then((res) => {
@@ -25,7 +27,6 @@ const TopSwiper = () => {
             setLoading(false)
         })
     }, [])
-    console.log(data);
   return (
     <Box w={'100%'} h={'60vh'} >
         {loading && <Box width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
