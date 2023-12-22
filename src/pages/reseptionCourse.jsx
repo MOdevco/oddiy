@@ -9,10 +9,11 @@ const ReseptionCourse = () => {
     const {id} = useParams(null)
     const url = `${api}api/course/by/?id=${id}`
     const [data , setData ] = useState(null)
-    console.log(data);
     useEffect(() => {
         axios.get(url ,{
             headers: {
+                "ngrok-skip-browser-warning": true,
+                "Access-Control-Allow-Origin": "*",
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then((res) => {

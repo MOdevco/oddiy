@@ -36,6 +36,9 @@
 .slider img {
     filter: brightness(40%);
 }
+.swipperBG {
+   background: rgba(0, 0,0,0.4) !important;
+}
 .CardEffect:hover .btn {
     display: block;
 }

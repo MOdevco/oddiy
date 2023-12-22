@@ -10,7 +10,7 @@ import axios from 'axios'
 import { api } from '../api/api'
 import TopSwiper from '../components/TopSwiper/topSwiper'
 
-const Home = () => {
+const Home = ({setDataVal}) => {
   const [data , setData] = useState([])
   const [data2 , setData2] = useState([])
   const [loading , setLoading] = useState(true)
@@ -19,6 +19,8 @@ const Home = () => {
   useEffect(() => {
       axios.get(url , {
           headers: {
+            "ngrok-skip-browser-warning": true,
+            "Access-Control-Allow-Origin": "*",
               Authorization: `Bearer ${localStorage.getItem('token')}`
           }
       }).then((res) => {
@@ -46,7 +48,7 @@ const Home = () => {
       </Box>
 
       <Box>
-        <AllCourse data={data} loading={loading} />
+        <AllCourse data={data} loading={loading} setDataVal={setDataVal} />
       </Box>
 
       <Box>

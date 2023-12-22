@@ -13,6 +13,8 @@ const Courses = () => {
   useEffect(() => {
     axios.get(url , {
       headers: {
+        "ngrok-skip-browser-warning": true,
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     }).then((res) => {

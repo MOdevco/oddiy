@@ -1,20 +1,47 @@
-import { Box, Button, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Image, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
-import { manku } from '../assets'
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
 import { FaArrowRight } from "react-icons/fa6";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import axios from 'axios';
 import { api } from '../api/api';
 import ImageGet from '../components/image/image';
 
+// import React, { useRef} from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import { FreeMode, Pagination } from 'swiper/modules';
+import { Autoplay,  Navigation } from "swiper/modules";
+import '../../src/about.css'
 export default function About() {
+  const [modalImg, setModalImg] = useState('')
   const [data , setData] = useState('')
   console.log(data);
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [size, setSize] = React.useState('md')
+
+  const handleSizeClick = (newSize) => {
+    setSize(newSize)
+    onOpen()
+  }
+
 
 
   useEffect(() => {
     axios.get(`${api}api/about-us/` , {
       headers: {
+        "ngrok-skip-browser-warning": true,
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     }).then((res) => {
@@ -25,9 +52,15 @@ export default function About() {
 //   useEffect(() => {
 //     window.scroll(0,0)
 // } ,[])
+const modal = (id) => {
+    setModalImg(`${api}api/image/?id=${id}`)
+    handleSizeClick('full')
+}
+ 
+
   return (
     <Box >
-      <Box minHeight='70vh' display='flex' alignItems='center' justifyContent='space-around' flexDirection={{md:'unset', base:'column'}} >
+      <Box minHeight='70vh' display='flex' w={'100%'} alignItems='center' justifyContent='space-around' flexDirection={{md:'unset', base:'column'}} >
         {/* for mans picture  */}
         <Box>
           <Text color='#E9EAF0' fontSize='80px'>2023 - YIL</Text>
@@ -39,18 +72,53 @@ export default function About() {
         </Box>
       </Box>
 
-      <Box minHeight={'30vh'}>
+      <Box minHeight={'30vh'} display={'flex'} py={10} alignItems={'center'} justifyContent={'center '}>
 
+        {data && data.additionalPhoto.map((pre) => (
+          <Swiper
+
+            slidesPerView={3}
+            spaceBetween={30}
+            freeMode={true}
+            modules={[Autoplay, Pagination, Navigation]} 
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            className="mySwiper"
+
+          >
+            <SwiperSlide>
+              <Image  src={`${api}api/image/?id=${pre.id}`} ></Image>
+            </SwiperSlide>
+          </Swiper>
+        ))}
       </Box>
+
+
       {/* for woman and man  */}
       <Box display='flex' alignItems='flex-start' mb={20} p={5} pb={20} justifyContent='space-around' bg='#FFEEE8' gap={20}  flexDirection={'column'} mt={{md:'0', base:'40px'}} >
         <Text color='#FF6636' fontSize='30px' fontWeight='500' >TASDIQLANGAN LITSENZIYA</Text>
-        <Box display={'flex'} gap={10}>
+        <Box display={'flex'} pl={20} gap={5}>
           {data &&  data.licensePhotos.map((item ,i) => (
             <Box >
-              <Image width={'300px'} height={'500px'} src={`${api}api/image/?id=${item.id}`}></Image>
+              <Image onClick={() => modal(item.id)}  width={'300px'} height={'500px'} src={`${api}api/image/?id=${item.id}`} ></Image>
             </Box>
           ))}
+           
+        
+
+        <Modal onClose={onClose} size={size} isOpen={isOpen}>
+          <ModalOverlay bg={'transparent'}/>
+          <ModalContent>
+            <ModalCloseButton fontSize={'30px'} />
+            <ModalBody px={'20px'}>
+              <Image w={'100%'} m={'auto'} h={'95vh'} src={modalImg} />
+            </ModalBody>
+            <ModalFooter>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
         </Box>
       </Box>
       {/* for img  */}
