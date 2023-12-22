@@ -11,6 +11,6 @@ import Work from './work.png'
 import Teacher from './teacher.png'
 import RegisterImg from './register.png'
 import NoteFountImg from './noteFount.png'
-import manku from './manku.jpg'
+import Tr from './Trailer.png'
 
-export{Logo, Logo2 , Top, RegisterImg , Img1 , Img2 , Img3 , Img4 , Course , TeacherStatus , Work , Teacher , NoteFountImg, manku }
+export{Logo, Logo2 , Top, RegisterImg , Img1 , Img2 , Img3 , Img4 , Course , TeacherStatus , Work , Teacher , NoteFountImg,  Tr }

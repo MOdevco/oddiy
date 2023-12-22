@@ -32,23 +32,23 @@ const Contact = () => {
         }
     }
     return (
-        <Box width={'100%'} display={'flex'} height='71.2vh' flexDirection={'column'} alignItems={'center'} justifyContent={'flex-start'} >
+        <Box width={'100%'} display={'flex'} minHeight='71.2vh' flexDirection={'column'} alignItems={'center'} justifyContent={'flex-start'} pb={'30px'}>
             <Box>
                 <Heading textAlign={'center'}>Murojatingizni yozing</Heading>
             </Box>
             <Box mt={2} >
                 <Box >
                     <Box mt={2}>
-                        <FormControl isRequired display='flex' alignItems='center' justifyContent='center' flexDirection='column' gap={0}>
+                        <FormControl isRequired display='flex' alignItems='center' justifyContent='center' flexDirection='column' gap={5}>
                             <FormLabel>Xabar Jo'natish uchun</FormLabel>
-                            <Input isInvalid={value.length  > 0 ? false : true} placeholder='Name' width={420} onChange={(e) => setValue(e.target.value)} value={value}></Input>
-                            <Input isInvalid={value1.length  > 0 ? false : true} placeholder='Email' width={420} onChange={(e) => setValue1(e.target.value)} value={value1}></Input>
+                            <Input required isInvalid={value.length  > 0 ? false : true} placeholder='Name' width={{base:'100%', md:'420px'}} onChange={(e) => setValue(e.target.value)} value={value}></Input>
+                            <Input required isInvalid={value1.length  > 0 ? false : true} placeholder='Email' width={{base:'100%', md:'420px'}} onChange={(e) => setValue1(e.target.value)} value={value1}></Input>
                             <Textarea onChange={(e) => setValue2(e.target.value)} value={value2} isInvalid={value2.length  > 0 ? false : true} width={{ base: '100%', md: '420px' }} border='none' height={'200px'} placeholder='xabar...' />
                             {valid ? <Text>Malumot toliq emas</Text> : null}
                         </FormControl>
                     </Box>
 
-                    <Box pt={5}>
+                    <Box pt={5} pb={{sm:'100px', md:'0px'}}>
                         <Button color={'white'} className='button type1' onClick={show1}></Button>
                     </Box>
                 </Box>

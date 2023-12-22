@@ -96,7 +96,7 @@ const AllCourse = ({data , loading , setDataVal}) => {
                                     width={'100%'}
                                     h={'250px'}
                                     />
-                                        <Button onClick={() => setDataVal(item.course)} bg={'none'} _hover={{bg: ''}} border={'1px'} borderColor={'white'} color={'white'} position={'absolute'}top={20} className='btn' width={{base: '100px' , md: '250px'}} h={'50px'} left={{base: '110px' , md: '70px'}} >
+                                        <Button onClick={() => setDataVal(item.course)} bg={'none'} _hover={{bg: ''}} border={'1px'} borderColor={'white'} color={'white'} position={'absolute'}top={20} className='btn' width={{base: '100px' , md: '150px'}} h={'50px'} left={{base: '110px' , md: '70px'}} >
                                             <Link to={'/fullDesc'}>
                                                 Batafsil
                                             </Link>
