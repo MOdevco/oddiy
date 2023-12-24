@@ -8,29 +8,7 @@ import {
 } from '@chakra-ui/react'
 import { Textarea } from '@chakra-ui/react'
 const Contact = () => {
-    const [value, setValue] = useState("")
-    const [value1, setValue1] = useState("")
-    const [value2, setValue2] = useState("")
-    const [valid, setValid] = useState(false);
-    const [valid1, setValid1] = useState(false);
-    const [valid2, setValid2] = useState(false);
-  const toast = useToast()
-
-    const show1 = () => {
-        if(value == ''){
-            setValid(true)
-        } 
-        else{
-            toast({
-                title: 'Xabar',
-                description: "Ma'lumot jo'natildi.",
-                status: 'success',
-                position:'top-right',
-                duration: 800,
-                isClosable: true,
-              })
-        }
-    }
+   
     return (
         <Box width={'100%'} display={'flex'} minHeight='71.2vh' flexDirection={'column'} alignItems={'center'} justifyContent={'flex-start'} pb={'30px'}>
             <Box>
@@ -41,15 +19,12 @@ const Contact = () => {
                     <Box mt={2}>
                         <FormControl isRequired display='flex' alignItems='center' justifyContent='center' flexDirection='column' gap={5}>
                             <FormLabel>Xabar Jo'natish uchun</FormLabel>
-                            <Input required isInvalid={value.length  > 0 ? false : true} placeholder='Name' width={{base:'100%', md:'420px'}} onChange={(e) => setValue(e.target.value)} value={value}></Input>
-                            <Input required isInvalid={value1.length  > 0 ? false : true} placeholder='Email' width={{base:'100%', md:'420px'}} onChange={(e) => setValue1(e.target.value)} value={value1}></Input>
-                            <Textarea onChange={(e) => setValue2(e.target.value)} value={value2} isInvalid={value2.length  > 0 ? false : true} width={{ base: '100%', md: '420px' }} border='none' height={'200px'} placeholder='xabar...' />
-                            {valid ? <Text>Malumot toliq emas</Text> : null}
+                            <Textarea width={{ base: '100%', md: '420px' }} border='none' height={'200px'} placeholder='xabar...' />
                         </FormControl>
                     </Box>
 
                     <Box pt={5} pb={{sm:'100px', md:'0px'}}>
-                        <Button color={'white'} className='button type1' onClick={show1}></Button>
+                        <Button color={'#000'} >Jo'natish</Button>
                     </Box>
                 </Box>
             </Box>

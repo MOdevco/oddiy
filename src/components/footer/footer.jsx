@@ -1,6 +1,9 @@
 import { Box, Button, Heading, Image, Text } from '@chakra-ui/react'
 import React from 'react'
 import { Logo, Logo2 } from '../../assets'
+import { FaTelegramPlane } from "react-icons/fa";
+import { CiInstagram } from "react-icons/ci";
+import { AiOutlineYoutube } from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -13,25 +16,21 @@ const Footer = () => {
                 </Box>
 
                 <Box>
-                  <Button h={'50px'} width={{base: '100%' , md: '300px'}} bg={'#564FFD'} color={'white'} _hover={{bg: ''}}>Biz bilan bog'lanish</Button>
+                  <Text fontSize={'20px'} color={'gray'}>Bizni ichtimoiy tarmoqlarda kuzating.</Text>
+                </Box>
+
+                <Box display={'flex'} gap={3}>
+                  <Box display={'flex'} alignItems={'center'} className='hoverInfo' justifyContent={'center'}minHeight={'100%'} width={'50px'} h={'50px'} bg={'#363B4766'}><FaTelegramPlane fontSize={'30px'} color='white' /></Box>
+                  <Box display={'flex'} alignItems={'center'} className='hoverInfo' justifyContent={'center'}minHeight={'100%'} width={'50px'} h={'50px'} bg={'#363B4766'}><CiInstagram  fontSize={'30px'} color='white' /></Box>
+                  <Box display={'flex'} alignItems={'center'} className='hoverInfo' justifyContent={'center'}minHeight={'100%'} width={'50px'} h={'50px'} bg={'#363B4766'}><AiOutlineYoutube fontSize={'30px'} color='white' /></Box>
+
                 </Box>
 
 
               </Box>
 
             <Box display={'flex'} alignItems={'center'} flexDirection={{base: 'column' , md: 'row'}} gap={{base: '30px' , md: '100px'}}>
-              <Box color={'white'} fontSize={'20px'}>
-                <Heading color={'#564FFD'}>60+</Heading>
-                <Text color={'gray'}>O'quvchilar</Text>
-              </Box>
-              <Box color={'white'} fontSize={'20px'}>
-                <Heading color={'#FF6636'}>20+</Heading>
-                <Text color={'gray'}>YO'nalishlar</Text>
-              </Box>
-              <Box color={'white'} fontSize={'20px'}>
-                <Heading>10+</Heading>
-                <Text color={'gray'}>Ish o'rinlari</Text>
-              </Box>
+             
             </Box>
 
           </Box>

@@ -10,11 +10,11 @@ const EnterWork = () => {
    <Box bg={'#F5F7FA'} width={'100%'} minHeight={'50vh'} p={'20px'}>
         <Box className='wrapper' display={'flex'} justifyContent={'center'} alignItems={'center'}>
             <Box className='Responsive' display={'flex'} alignItems={'center'} gap={'20px'} justifyContent={'space-evenly'} width={{base: '100%' , md: '75%'}}>
-                <Box className='bgImg' width={'100%'} display={'flex'} flexDirection={'column'} alignItems={'self-start'} gap={'20px'} p={'20px'} color={'white'}  bg={'#564FFD'}>
+                <Box className='bgImg' width={'100%'} display={'flex'} flexDirection={'column'} alignItems={'self-start'} gap={'20px'} p={'20px'} color={'white'}  bg={'#000'}>
                     <Heading>Malumotlar To’iq holda</Heading>
                     <Text maxW={'400px'}>Agarda siz shartlarga to’g’ri kelgan holatda malumotlaringiz yetarli bo’lsa bizga arizani berishingiz mumkin bo’ladi.</Text>
                     <Link to={'/aplication'}>
-                        <Button _hover={{bg: ''}} bg={'white'}  display={'flex'} alignItems={'center'} gap={2 } color={'#564FFD'}>Ariza Qoldirish       <FaArrowRightLong fontSize={'20px'} className='right' /></Button>
+                        <Button _hover={{bg: ''}} bg={'white'}  display={'flex'} alignItems={'center'} gap={2 } color={'#000'}>Ariza Qoldirish<FaArrowRightLong fontSize={'20px'} className='right' /></Button>
                     </Link>
                 </Box>
 

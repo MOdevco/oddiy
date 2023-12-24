@@ -1,5 +1,5 @@
-export const api = 'http://192.168.37.66:1328/'
+export const api = 'http://192.168.37.66/'
 
-// export const api = 'https://f044-188-113-203-39.ngrok-free.app/'
+// export const api = 'https://0005-188-113-218-134.ngrok-free.app/'
 
-localStorage.setItem('token' , 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5OTg5MDAwMDAwMDAiLCJpYXQiOjE3MDI5NzUyMDksImV4cCI6MTcwNTU2NzIwOX0.kT4RJWv22e2Yj8fmN2nj9sO6XxQL_kl4LDDPN40pD8WJ7edaxfN_9ExId2Q4O26pKB33xHOyKSMVfMMag37QBQ')
+localStorage.setItem('token' , "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5OTg5MjMzNTY1NjUiLCJpYXQiOjE3MDMzMTQwMzAsImV4cCI6MTcwNTkwNjAzMH0.IV07fSdsvCM6SDezPEpou2jmS9uOCuGAEa4VGyQAsVd3TNNx6HN5PLDaiUXnFTXXrqk63QvXuxlSpGJLSEbaug")

@@ -1,4 +1,4 @@
-import { Box, Button, Image, Text, useDisclosure } from '@chakra-ui/react'
+import { Box, Button, Heading, Image, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import {
   Modal,
@@ -56,64 +56,77 @@ const modal = (id) => {
     setModalImg(`${api}api/image/?id=${id}`)
     handleSizeClick('full')
 }
- 
+// src={`${api}api/image/?id=${pre.id}`}
 
   return (
     <Box >
       <Box minHeight='70vh' display='flex' w={'100%'} alignItems='center' justifyContent='space-around' flexDirection={{md:'unset', base:'column'}} >
         {/* for mans picture  */}
-        <Box>
+        <Box mx={40}>
           <Text color='#E9EAF0' fontSize='80px'>2023 - YIL</Text>
           <Text color='#1D2026' fontSize='48px'>{data.academyName}</Text>
           <Text color='#6E7485' width='535px' fontSize={'30px'}>{data.fullAboutUs}</Text>
         </Box>
-        <Box>
-          <Image src={`${api}api/image/?id=37`}></Image>
+        <Box mr={40}>
+          <Image borderRadius={'10px'} width={'100%'} height={'600px'} src={`${api}api/image/?id=37`}></Image>
         </Box>
       </Box>
 
-      <Box minHeight={'30vh'} display={'flex'} py={10} alignItems={'center'} justifyContent={'center '}>
+      <Box minHeight={'30vh'} display={'flex'}  pt={15} alignItems={'center'} justifyContent={'center '}>
 
-        {data && data.additionalPhoto.map((pre) => (
-          <Swiper
-
-            slidesPerView={3}
-            spaceBetween={30}
-            freeMode={true}
-            modules={[Autoplay, Pagination, Navigation]} 
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            className="mySwiper"
-
-          >
+        <Swiper
+          slidesPerView={3}
+          spaceBetween={'-170px'}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
+          // breakpoints={{
+          //   640: {
+          //     slidesPerView: 2,
+          //     spaceBetween: 20,
+          //   },
+          //   768: {
+          //     slidesPerView: 4,
+          //     spaceBetween: 40,
+          //   },
+          //   1024: {
+          //     slidesPerView: 5,
+          //     spaceBetween: 50,
+          //   },
+          // }}
+          modules={[Pagination , Autoplay , Navigation]}
+        >
+          {data && data.additionalPhoto.map((pre) => (
             <SwiperSlide>
-              <Image  src={`${api}api/image/?id=${pre.id}`} ></Image>
-            </SwiperSlide>
-          </Swiper>
-        ))}
+              <Image onClick={() => modal(pre.id)} objectFit={'cover'} borderRadius={'10px'} src={`${api}api/image/?id=${pre.id}`} width={'520px'} height={'276px'} ></Image>
+            </SwiperSlide>  
+          ))}
+
+        </Swiper>
       </Box>
 
 
       {/* for woman and man  */}
-      <Box display='flex' alignItems='flex-start' mb={20} p={5} pb={20} justifyContent='space-around' bg='#FFEEE8' gap={20}  flexDirection={'column'} mt={{md:'0', base:'40px'}} >
-        <Text color='#FF6636' fontSize='30px' fontWeight='500' >TASDIQLANGAN LITSENZIYA</Text>
-        <Box display={'flex'} pl={20} gap={5}>
+      <Box display='flex' alignItems='center' p={20} px={40}  className='borderTop' justifyContent='space-around' bg='#FFEEE8' gap={20}  flexDirection={'column'} mt={{md:'50px', base:'40px'}} >
+        <Box display={'flex'} alignItems={'center'} >
           {data &&  data.licensePhotos.map((item ,i) => (
             <Box >
-              <Image onClick={() => modal(item.id)}  width={'300px'} height={'500px'} src={`${api}api/image/?id=${item.id}`} ></Image>
+              <Image onClick={() => modal(item.id)} ml={i===1 ? '200px' : ''} right={i===2 ? '200px' :''}  top={i===2 ? '-10px' :''}  style={{transform: i===1 ? 'rotate(-30deg)' : '' , paddingLeft: i===2 ? '-500px' : ''}} position={'relative'}  width={'300px'} height={'400px'} src={`${api}api/image/?id=${item.id}`} ></Image>
             </Box>
           ))}
-           
-        
+          <Box>
+            <Heading color={'orange'} fontSize={'24px'}>Rasmiylik identifikatori</Heading>
+            <Heading fontSize={'40px'}>DataSpin Academy <br /> o'z ishini rasmiy tartibda olib boradi.</Heading>
+          </Box>
+          
 
         <Modal onClose={onClose} size={size} isOpen={isOpen}>
           <ModalOverlay bg={'transparent'}/>
           <ModalContent>
             <ModalCloseButton fontSize={'30px'} />
             <ModalBody px={'20px'}>
-              <Image w={'100%'} m={'auto'} h={'95vh'} src={modalImg} />
+              <Image w={'100%'} m={'auto'} h={'100%'} src={modalImg} />
             </ModalBody>
             <ModalFooter>
             </ModalFooter>
@@ -122,17 +135,7 @@ const modal = (id) => {
         </Box>
       </Box>
       {/* for img  */}
-      {/* <Box mt={20} display='flex' alignItems='center' gap={20} justifyContent='space-around' flexDirection={{md:'unset', base:'column'}} marginTop={{md:'0', base:'40px'}}>
-        <Box>
-          <Text color='#FF6636' fontSize={16} fontWeight={500}>Our Gallary</Text>
-          <Text color='#1D2026' fontWeight={600} fontSize={40}>We’ve been here <br /> almost 17 years</Text>
-          <Text width='424px' color='#4E5566' >Fusce lobortis leo augue, sit amet tristique nisi commodo in. Aliquam ac libero quis tellus venenatis imperdiet. Sed sed nunc libero. Curabitur in urna ligula.  torquent per conubia nostra.</Text>
-          <Button bg='#FF6636' color='white' display='flex' alignItems='center' gap={2}>Join Our Team <FaArrowRight /> </Button>
-        </Box>
-        <Box>
-          <img src={manku} width={500} alt="" />
-        </Box>
-      </Box> */}
+
       {/* for cards  */}
         <Box display='flex' alignItems='center' justifyContent='center' flexDirection={{md:'unset', base:'column'}}>
           {/* card  */}

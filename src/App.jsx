@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
 import Navbar from './components/navbar/navbar'
 import Footer from './components/footer/footer'
 import { Route, Router, Routes } from 'react-router-dom'
@@ -12,16 +12,50 @@ import Aplication from './pages/aplication'
 import ReseptionCourse from './pages/reseptionCourse'
 import About from './pages/about'
 import FullDesc from './pages/fullDesc'
+import ScrollToTop from 'react-scroll-to-top'
+import {GoMoveToTop} from 'react-icons/go'
+import MyCourse from './pages/myCourse'
 function App() {
   const [dataVal ,setDataVal] = useState('')
+  const [scroll, setScroll] = useState(false);
 
+  useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      if (window.scrollY > 10) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    });
+  }, []);
+  const handleScroll = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
 
   useEffect(() => {
     window.scroll(0,0)
   }, [])
   return (
+
+    
     <Box >
+
+      {scroll && (
+        <Box position={"fixed"} zIndex={20} right={"30px"} bottom={"30px"}>
+          <Button
+            height={"60px"}
+            _hover={{ bg: "#000" }}
+            onClick={handleScroll}
+            bg={"#000"}
+          >
+            <GoMoveToTop color="white" fontSize={"30px"} />
+          </Button>
+        </Box>
+      )}
       {/* for navbar */}
       <Box mb={20}>
         <Navbar />
@@ -39,6 +73,7 @@ function App() {
           <Route path='/reseptionCourse/:id' element={<ReseptionCourse />}></Route>
           <Route path='*' element={<NoteFount />}></Route>
           <Route path='/fullDesc' element={<FullDesc dataVal={dataVal} />}></Route>
+          <Route path='/myCourse' element={<MyCourse />}></Route>
         </Routes>
       </Box>
 
