@@ -57,7 +57,7 @@ const TopSwiper = () => {
               </SwiperSlide>
           ))}
         </Swiper>}
-        fdg
+        
       </Box>
     </Box>
   )

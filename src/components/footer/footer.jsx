@@ -1,6 +1,6 @@
 import { Box, Button, Heading, Image, Text } from '@chakra-ui/react'
 import React from 'react'
-import { Logo, Logo2 } from '../../assets'
+import { Logo, Logo2, Mobile } from '../../assets'
 import { FaTelegramPlane } from "react-icons/fa";
 import { CiInstagram } from "react-icons/ci";
 import { AiOutlineYoutube } from "react-icons/ai";
@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <Box  w={'100%'} bg={'#1D2026'}  p={'20px'}>
       <Box className='wrapper'>
-          <Box  display={'flex'} alignItems={{base: 'flex-start' , md: 'center'}} justifyContent={'space-between'} gap={5} flexDirection={{base: 'column' , md: 'row'}}>
+          <Box  display={'flex'} alignItems={{base: 'flex-start' , md: 'center'}} justifyContent={'space-evenly'} gap={5} flexDirection={{base: 'column' , md: 'row'}}>
               <Box display={'flex'} flexDirection={'column'} gap={5}>
                 <Box display={'flex'}alignItems={'flex-start'} flexDirection={'column'} >
                   <Image w={'250px'} src={Logo}></Image>
@@ -29,8 +29,12 @@ const Footer = () => {
 
               </Box>
 
-            <Box display={'flex'} alignItems={'center'} flexDirection={{base: 'column' , md: 'row'}} gap={{base: '30px' , md: '100px'}}>
-             
+            <Box display={'flex'} flexDirection={'column'} gap={5}>
+              <Heading fontSize={'30px'} color={'white'}>Mobile app</Heading>
+              <Heading fontSize={'25px'} color={'gray'}>DataSpin Academy</Heading>
+              <Box>
+                <Image width={'150px'} src={Mobile}></Image>
+              </Box>
             </Box>
 
           </Box>

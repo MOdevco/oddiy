@@ -31,6 +31,7 @@ const FullDesc = ({ dataVal }) => {
   return (
     
     <Box
+      pt={'30px'}
       minHeight="100vh"
       display="flex"
       alignItems="start"

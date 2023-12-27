@@ -19,7 +19,7 @@ const FutureAllCourse = ({data , loading}) => {
                  <Lottie animationData={groovyWalkAnimation2} loop={true} />
                 </Box>
             </Box>}
-            {!loading && <Box display={'flex'} justifyContent={'space-between'} flexWrap={'wrap'} gap={10}>
+            {!loading && <Box display={'flex'} width={'100%'} justifyContent={'center'} flexWrap={'wrap'} alignItems={'center'} gap={10}>
                 {data && data.map((item , i) => {
                     if(item.course.status === false)
                         return (
@@ -47,12 +47,11 @@ const FutureAllCourse = ({data , loading}) => {
         
                                     <CardFooter display={'flex'} alignItems={{base: 'flex-start' , md: 'center'}} gap={5} justifyContent={{base: 'flex-start' , md: 'space-between'}} flexDirection={{base: 'column' , md: 'row'}}>
                                         <Box display={'flex'} alignItems={'center'} gap={3}>
-                                            <Avatar src={`${api}api/image/?id=${item.mentor.employee.photo.id}`} />
-                                            <Text fontSize={'18px'} fontWeight={'500'}>{item.mentor.employee.face.firstname} {item.mentor.employee.face.lastname}</Text>
+                                            <Avatar src={`${api}api/image/?id=${item.mentor === null ? '' : item.mentor.employee.photo.id}`} />
+                                            <Text fontSize={'18px'} fontWeight={'500'}>{item.mentor ===null ? "Mentor belgilanmagan": item.mentor.employee.face.firstname} {item.mentor === null ? '' : item.mentor.employee.face.lastname}</Text>
                                         </Box>
                                         <Box fontSize={'20px'} display={'flex'} alignItems={'center'} gap={'☻'}>
-                                            <IoMan />
-                                            <Text color={'orange'} fontWeight={'500'}>O'quvchilar: <span style={{color: '#9F82FF' , fontWeight: 'bold'}}>{item.reception_counter.totalCount} ta</span></Text>
+                                            <Text color={'orange'} fontWeight={'500'}>Qabulda: <span style={{color: '#9F82FF' , fontWeight: 'bold'}}>{item.reception_counter ===null ? '' : item.reception_counter.totalCount} ta</span></Text>
                                         </Box>
                                     </CardFooter>
                                 </Stack>
@@ -67,3 +66,4 @@ const FutureAllCourse = ({data , loading}) => {
 }
 
 export default FutureAllCourse
+

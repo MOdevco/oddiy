@@ -22,24 +22,26 @@ const EnterWork = () => {
                 <Box className='bgImg' width={'100%'} display={'flex'} flexDirection={'column'} alignItems={'self-start'} gap={'20px'} p={'20px'} color={'black'} bg={'#ffff'}>
                     <Heading >Ishga kirish uchun tanishing</Heading>
 
-                    <Box display={'flex'} flexDirection={'column'} gap={10}>
-                        <Box display={'flex'} justifyContent={'space-between'} flexDirection={{base: 'column' , md: 'row'}} alignItems={{base: 'flex-start' , md: 'center'}} gap={5} width={'100%'}>
+                    <Box display={'flex'} gap={2}>
+                        <Box  flexDirection={{base: 'column' , md: 'row'}} alignItems={{base: 'flex-start' , md: 'center'}} gap={5} width={'100%'}>
                             <Box display={'flex'} alignItems={'center'} gap={2}>
                                 <Heading width={'50px'} h={'50px'} bg={'#EBEBFF'} textAlign={'center'} rounded={'50%'} color={'#564FFD'}>1</Heading>
                                 <Text fontSize={'18px'} fontWeight={'500'}>Yonalish sertifikati</Text>
                             </Box>
-                            <Box display={'flex'} alignItems={'center'} gap={2}>
+                            <Box display={'flex'} alignItems={'center'} gap={2} mt={5}>
                                 <Heading width={'50px'} h={'50px'} bg={'#FFF0F0'} textAlign={'center'} rounded={'50%'} color={'#FF6636'}>2</Heading>
-                                <Text fontSize={'18px'} fontWeight={'500'}>Yoshingiz 18dan <br /> katta bo’lish</Text>
+                                <Text fontSize={'18px'} fontWeight={'500'}>Yoshingiz 18dan katta bo’lish</Text>
                             </Box>
                         </Box>
 
-                        <Box display={'flex'} justifyContent={'space-between'} flexDirection={{base: 'column' , md: 'row'}} alignItems={{base: 'flex-start' , md: 'center'}} gap={5} width={'100%'}>
+                        <Box  flexDirection={{base: 'column' , md: 'row'}} alignItems={{base: 'flex-start' , md: 'center'}} gap={5} width={'100%'}>
+
                             <Box display={'flex'} alignItems={'center'} gap={2}>
                                 <Heading width={'50px'} h={'50px'} bg={'#FFF0F0'} textAlign={'center'} rounded={'50%'} color={'#E34444'}>3</Heading>
                                 <Text fontSize={'18px'} fontWeight={'500'}>Dars o’tish metidikasi</Text>
                             </Box>
-                            <Box display={'flex'} alignItems={'center'} gap={2}>
+
+                            <Box display={'flex'} alignItems={'center'} gap={2} mt={5}>
                                 <Heading width={'50px'} h={'50px'} bg={'#E1F7E3'} textAlign={'center'} rounded={'50%'} color={'#23BD33'}>4</Heading>
                                 <Text fontSize={'18px'} fontWeight={'500'}>2 yildan oshiq tajriba</Text>
                             </Box>

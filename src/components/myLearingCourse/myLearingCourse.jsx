@@ -1,41 +1,62 @@
-import React from 'react'
-import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Text, Divider, ButtonGroup, Button, Heading, Box } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
+import { Card, CardHeader, CardBody, CardFooter, Image, Stack, Text, Divider, ButtonGroup, Button, Heading, Box, Avatar } from '@chakra-ui/react'
 import { Teacher } from '../../assets'
+import axios from 'axios'
+import { api } from '../../api/api'
+import Lottie from 'lottie-react'
+import groovyWalkAnimation2 from "../../Animation - 1703051368917.json" 
 const MyLearingCourse = () => {
+    const [data , setData] = useState([])
+    const [loading , setLoading] = useState(true)
+
+    useEffect(() => {
+        axios.get(`${api}api/reception/by-user` , {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then((res) => {
+            console.log(res.data.data);
+            setData(res.data.data)
+            setLoading(false)
+        })
+    } , [])
+
+
   return (
-    <Box  p={5} display={'flex'} flexDirection={'column'} gap={5}>
-    
-        <Card maxW='sm'  className='zigzak' borderBottom={'none'} rounded={'0'}>
-            <CardBody>
-                <Image
-                src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-                alt='Green double couch with wooden legs'
-                borderRadius='lg'
-                />
-                <Stack mt='6' spacing='3'>
-                <Heading size='md'>Living room Sofa</Heading>
-                <Text>
-                    This sofa is perfect for modern tropical spaces, baroque inspired
-                    spaces, earthy toned spaces and for people who love a chic design with a
-                    sprinkle of vintage design.
-                </Text>
-                <Text color='blue.600' fontSize='2xl'>
-                    $450
-                </Text>
-                </Stack>
-            </CardBody>
-            <Divider />
-            <CardFooter >
-                <ButtonGroup spacing='2'>
-                <Button variant='solid' colorScheme='blue'>
-                    Buy now
-                </Button>
-                <Button variant='ghost' colorScheme='blue'>
-                    Add to cart
-                </Button>
-                </ButtonGroup>
-            </CardFooter>
-        </Card>
+    <Box  p={5} display={'flex'}  gap={5}  flexWrap={'wrap'} >
+        <Box  width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
+            {loading && <Box width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
+                <Box width={'200px'}>
+                 <Lottie animationData={groovyWalkAnimation2} loop={true} />
+                </Box>
+            </Box>}
+        </Box>
+        {!loading && data.map((item , i) => (
+            <Card maxW='sm'  className='zigzak' borderBottom={'none'} rounded={'0'} mt={10}>
+                <Box textAlign={'center'} fontSize={'20px'} rounded={'8px'} fontWeight={'400'} pt={1} width={'100%'}>
+                    Reg-no: <br /> {item.receptionNumber}
+                </Box>
+                <CardBody>
+                    <Image
+                    src={`${api}api/image/?id=${item.coursePhoto.id}`}
+                    alt='Green double couch with wooden legs'
+                    borderRadius='lg'
+                    />
+                    <Stack mt='6' spacing='3'>
+                        <Heading size='md' fontWeight={'500'}>Kurs nomi: {item.courseName}</Heading>
+                        <Heading size='md' fontWeight={'500'}>Kurs turi: {item.courseType.name}</Heading>
+                        <Heading size='md' fontWeight={'500'}>Kurs kimlar uchun: {item.courseFor.name}</Heading>
+                        <Text size='md' fontWeight={'500'}>Ma'lumot: {item.courseType.description}</Text>
+                    </Stack>
+                </CardBody>
+                <Divider />
+                <CardFooter display={'flex'} alignItems={'center'}  gap={2} flexDirection={{base: 'column' , md: 'row'} }>
+                    <Avatar  src={`${api}api/image/?id=${item.coursePhoto.id}`} />
+                    <Text fontWeight={'700'} fontSize={'20px'}>{item.userInfo.firstname}</Text>
+                    <Text fontWeight={'700'} fontSize={'20px'}>{item.userInfo.lastname}</Text>
+                </CardFooter>
+            </Card>
+        ))}
     
     </Box>
   )

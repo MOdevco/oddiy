@@ -12,5 +12,6 @@ import Teacher from './teacher.png'
 import RegisterImg from './register.png'
 import NoteFountImg from './noteFount.png'
 import Tr from './Trailer.png'
+import Mobile from './mobile.png'
 
-export{Logo, Logo2 , Top, RegisterImg , Img1 , Img2 , Img3 , Img4 , Course , TeacherStatus , Work , Teacher , NoteFountImg,  Tr }
+export{Logo, Logo2 , Mobile , Top, RegisterImg , Img1 , Img2 , Img3 , Img4 , Course , TeacherStatus , Work , Teacher , NoteFountImg,  Tr }

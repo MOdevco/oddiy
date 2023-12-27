@@ -8,9 +8,10 @@ import {
 import axios from 'axios'
 import { useState } from 'react'
 import { api } from '../../api/api'
+import { useNavigate } from 'react-router-dom'
 const AllRegiste = () => {
     const [data, setData] = useState({firstname: '' , lastname: '' , middlename: '' , birthday: '' , tel1: '' , tel2: '' , tg: ''})
-
+    const navigate = useNavigate()
     const handleSubmit = () => {
         axios.post(`${api}api/user/create`,{
             firstname: data.firstname,
@@ -28,7 +29,7 @@ const AllRegiste = () => {
             }
         } )
         .then((res) => {
-            alert('hii')
+            navigate('/home')
         }).catch((er) => {
             console.log(er);
         })

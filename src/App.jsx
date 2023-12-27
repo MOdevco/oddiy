@@ -18,7 +18,7 @@ import MyCourse from './pages/myCourse'
 function App() {
   const [dataVal ,setDataVal] = useState('')
   const [scroll, setScroll] = useState(false);
-
+  
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
       if (window.scrollY > 10) {
@@ -57,17 +57,17 @@ function App() {
         </Box>
       )}
       {/* for navbar */}
-      <Box mb={20}>
+      <Box mb={'78px'}>
         <Navbar />
       </Box>
 
       {/* for routes */}
       <Box>
         <Routes>
-          <Route path='/' element={<Home setDataVal={setDataVal} />}></Route>
-          <Route path='/register' element={<Register />}></Route>
+          <Route path='/home' element={<Home setDataVal={setDataVal} />}></Route>
+          <Route path='/' element={<Register />}></Route>
           <Route path='/allRegister' element={<AllRegiste />}></Route>
-          <Route path='/contact' element={<Contact  />}></Route>
+          {/* <Route path='/contact' element={<Contact  />}></Route> */}
           <Route path='/aplication' element={<Aplication  />}></Route>
           <Route path='/about' element={<About  />}></Route>
           <Route path='/reseptionCourse/:id' element={<ReseptionCourse />}></Route>

@@ -35,7 +35,7 @@ const Home = ({setDataVal}) => {
 }, [])
   return (
    <Box>
-      <Box pt={5}>
+      <Box >
         <TopSwiper />
       </Box>
 

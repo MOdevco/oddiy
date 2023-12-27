@@ -1,5 +1,5 @@
 import { Box, Button, Heading, Image, Text, useDisclosure } from '@chakra-ui/react'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Logo } from '../../assets'
 import {
@@ -21,24 +21,27 @@ import {
   DrawerContent,
   DrawerCloseButton,
 } from '@chakra-ui/react'
+import useProgres from '../../hooks/useProgres'
+
 import { ChevronDownIcon, HamburgerIcon } from '@chakra-ui/icons'
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
+  const completion = useProgres()
+  const [pre , setPre] = useState(false)
+
 
   return (
     <Box position={'fixed'} w={'100%'} zIndex={'100'} left={0} top={0}>
+      {!pre && <Text  position={'absolute'} bg={'orange'} className={'shadow'} width={'100%'} height={'5px'} style={{transform: `translateX(${completion - 100}%)`}}></Text>}
       <Box>
         {/* for top navigation */}
         <Box width={'100%'}  h={'78px'} bg={'#1D2026'} display={{base: 'none' , md: 'block'}} >
-          <Box h={'100%'} display={'flex'} color={'white'}  alignItems={'center'} justifyContent={'space-between'} className='wrapper' >
+          <Box  display={'flex'} color={'white'}  alignItems={'center'} justifyContent={'space-between'} className='wrapper' >
             <Box display={'flex'} color={'white'} gap={'40px'} fontSize={'18px'} justifyContent={'flex-start'}  alignItems={'center'} minH={'100%'}>
-                <NavLink  style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal' }}} to={'/'}> Bosh sahifa </NavLink>
-                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/about'}> Biz haqimizda </NavLink>
-                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/contact'}> Biz bilan a’loqa </NavLink>
-                <NavLink style={({isActive}) => {return{color: isActive ? 'orange' : '' , fontWeight: isActive ? 'bold' : 'normal'}}} to={'/myCourse'}>
-                  Profil
-                </NavLink>
+                <NavLink style={({isActive}) => {return{borderTopWidth: isActive ? '2px' : '' , borderTopColor: isActive ? '#FF6636' : '' , borderTopStyle: isActive ? 'solid' : '' }}}  to={'/home'}><Text pt={5}>Bosh sahifa</Text></NavLink>
+                <NavLink style={({isActive}) => {return{borderTopWidth: isActive ? '2px' : '' , borderTopColor: isActive ? '#FF6636' : '' , borderTopStyle: isActive ? 'solid' : '' }}} to={'/about'}><Text pt={5}> Biz haqimizda</Text> </NavLink>
+                <NavLink style={({isActive}) => {return{borderTopWidth: isActive ? '2px' : '' , borderTopColor: isActive ? '#FF6636' : '' , borderTopStyle: isActive ? 'solid' : '' }}} to={'/myCourse'}><Text pt={5}>Profil</Text> </NavLink>
             </Box>
 
             <Box>
@@ -64,9 +67,9 @@ const Navbar = () => {
 
                   <DrawerBody>
                      <Box display={'flex'} flexDirection={'column'}  color={'black'} gap={'40px'} fontSize={'18px'} justifyContent={'flex-start'} alignItems={'flex-start'} minH={'100%'}>
-                        <NavLink to={'/'}> Bosh sahifa </NavLink>
-                        <NavLink> Biz haqimizda </NavLink>
-                        <NavLink to={'/contact'}> Biz bilan a’loqa </NavLink>
+                        <NavLink  to={'/home'}> Bosh sahifa </NavLink>
+                        <NavLink to={'/about'}> Biz haqimizda </NavLink>
+                        {/* <NavLink to={'/contact'}> Biz bilan a’loqa </NavLink> */}
                         <Link to={'/myCourse'}>
                           <Button>Mening kurslarim</Button>
                         </Link>

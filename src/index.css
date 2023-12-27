@@ -19,6 +19,9 @@
 .verify {
     background-color: rgba(0, 0,0,0.6) !important;
 }
+.shadow {
+    filter: drop-shadow(3px 3px 3px #FF6636);
+}
 
 .CardEffect {
     transition: 0.5s !important;
@@ -34,6 +37,8 @@
 }
 .slider img {
     filter: brightness(40%);
+    object-fit: cover !important;
+    width: 100%;;
 }
 .swipperBG {
    background: rgba(0, 0,0,0.4) !important;
@@ -69,7 +74,7 @@
     left: -3px;
     width: 100%;
     height: 30px;
-    background: linear-gradient(-130deg , #00dfef 15px, transparent 0%),linear-gradient( #0000 12px, transparent 0%);
+    background: linear-gradient(-130deg , #000 15px, transparent 0%),linear-gradient( #0000 12px, transparent 0%);
     background-size: 24px;
 }
 .hoverInfo:hover {
@@ -82,6 +87,8 @@
     border-top: 5px solid #F1F1F1;
     border-radius: 12px;
 }
+
+
 @media (max-width: 2000px) {
     .cardResponsive {
         flex-wrap: wrap;

@@ -39,7 +39,7 @@ const AllCourse = ({data , loading , setDataVal}) => {
     const s = date.getSeconds()
     const ms = date.getMilliseconds()
     const [vr , setVr] = useState(false)
-
+    console.log(data);
     const handleSubmit = () => {
         axios.post(`${api}api/reception/new`,{
             "courseID": courseId,
@@ -95,6 +95,7 @@ const AllCourse = ({data , loading , setDataVal}) => {
                                     className='cardImg'
                                     width={'100%'}
                                     h={'250px'}
+                                    objectFit={'cover'}
                                     />
                                         <Button ml={{base: 0 , md: 5}}  onClick={() => setDataVal(item)} bg={'none'} _hover={{bg: ''}} border={'1px'}  borderColor={'white'} color={'white'} position={'absolute'} top={20} className='btn' width={{base: '85%' , md:'80%'}} h={'50px'}  >
                                             <Link to={'/fullDesc'}>
@@ -124,7 +125,7 @@ const AllCourse = ({data , loading , setDataVal}) => {
                                 <Divider />
                                 <CardFooter position={'relative'} p={0}>
                                     <Box display={'flex'} alignItems={'center'} width={'100%'} gap={5} p={5}>
-                                        <Avatar src={`${api}api/image/?id=${item.course.courseType.photo.id}`} />
+                                        <Avatar src={`${api}api/image/?id=${item.mentor.employee.photo.id}`} />
                                         <Text fontSize={'20px'} fontWeight={'500'}>{item.mentor === null ? "O'qituvchi belgilanmagan" : `${item.mentor.employee.face.firstname} ${item.mentor.employee.face.lastname}` } </Text>
                                     </Box>
                                     <Box onClick={() => {
