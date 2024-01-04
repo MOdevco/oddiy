@@ -25,6 +25,9 @@ const Register = () => {
     const navigate = useNavigate();
     const [des , setDes] = useState(false)
     const codePre = ["90","91","93","94","95","97","98","33","88","73","71","50","78","99"]
+    const [loading , setLoading] = useState(false)
+    const [loadingCode , setLoadingCode] = useState(false)
+    const [sendCode , setSendCode] = useState()
 
     const p1 = phoneValur.slice(1,4)
     const p2 = phoneValur.slice(6,8)
@@ -41,13 +44,15 @@ const Register = () => {
 
     const sendOtp = () => {
         if(codePre.includes(p2)) {
+            setLoading(true)
             const formData = new FormData()
             formData.append('phone' , resPhoneVal)
             axios.post(`${api}api/auth/send-code` , formData)
             .then((res) => {
                 setCode(res.data.data);
-                console.log(res.data.data);
+                setSendCode(res.data.data)
                 setMore(false)
+                setLoading(false)
             });
         }else {
             setDes(true)
@@ -59,23 +64,31 @@ const Register = () => {
             const formData = new FormData()
             formData.append('phone' , resPhoneVal)
             formData.append('code' , val)
-    
-            axios.post(`${api}api/auth/check-code` , formData)
+            setLoadingCode(true)
+            axios.post(`${api}api/auth/check-code/user-check` , formData)
             .then((res) => {
-                console.log(res.data);
-                toast({
-                    description: `${res.data.data.message}`,
-                    position: 'top-right',
-                    status: 'success',
-                    duration: 2000,
-                    isClosable: true,
+                
+               
+                const formData2 = new FormData()
+                formData2.append('phone', resPhoneVal)
+                formData2.append('code', res.data.data)
+                axios.post(`${api}api/auth/token-session` ,formData2  )
+                .then((res) => {
+                    toast({
+                        description: `${res.data.data.message}`,
+                        position: 'top-right',
+                        status: 'success',
+                        duration: 2000,
+                        isClosable: true,
+                    })
+                    localStorage.setItem('token' , res.data.data.token)                    
+                    if(res.data.message === 'Active') {
+                        navigate('/home')
+                    } else {
+                        navigate('/allRegister')
+                    }
+                    setLoadingCode(false)
                 })
-                localStorage.setItem('token' , res.data.data.token)
-                if(res.data.message === 'Active') {
-                    navigate('/home')
-                } else {
-                    navigate('/allRegister')
-                }
             })
         } else {
             toast({
@@ -114,9 +127,18 @@ const Register = () => {
                             </FormControl>
                         </Box>
 
-                        <Button onClick={() => {
+                       { !loading && <Button onClick={() => {
                             sendOtp()
-                        }} width={'200px'} display={'flex'} alignItems={'center'} gap={2} bg={'#000'} color={'white'} _hover={{bg: ''}} _active={{bg: ''}}>Tasdiqlash <FaArrowRightLong fontSize={'20px'} className='right' /></Button>
+                        }} width={'200px'} display={'flex'} alignItems={'center'} gap={2} bg={'#000'} color={'white'} _hover={{bg: ''}} _active={{bg: ''}}>Tasdiqlash <FaArrowRightLong fontSize={'20px'} className='right' /></Button>}
+                        {loading && <Button
+                            isLoading
+                            loadingText='Tasdiqlamoqda...'
+                            colorScheme='teal'
+                            variant='outline'
+                            width={'200px'}
+                        >
+                            
+                        </Button>}
                     </Box>}
 
 
@@ -134,10 +156,20 @@ const Register = () => {
                                         <PinInputField  onChange={(e) => setOtpValue({...otpValue, six: e.target.value})} width={'60px'} h={'60px'} />
                                     </PinInput>
                                 </HStack>
+                                <Text textAlign={'center'} mt={2}>{sendCode}</Text>
                             </FormControl>
                         </Box>
 
-                        <Button onClick={handleSendOtp} width={'200px'} display={'flex'} alignItems={'center'} gap={2} bg={'green'} color={'white'} _hover={{bg: ''}} _active={{bg: ''}}>Tasdiqlash <FaArrowRightLong fontSize={'20px'} className='right' /></Button>
+                        {!loadingCode && <Button onClick={handleSendOtp} width={'200px'} display={'flex'} alignItems={'center'} gap={2} bg={'green'} color={'white'} _hover={{bg: ''}} _active={{bg: ''}}>Tasdiqlash <FaArrowRightLong fontSize={'20px'} className='right' /></Button>}
+                       {loadingCode &&  <Button
+                            isLoading
+                            loadingText='Tasdiqlamoqda...'
+                            colorScheme='teal'
+                            variant='outline'
+                            width={'200px'} 
+                        >
+                            Submit
+                        </Button>}
 
                     </Box>}
 

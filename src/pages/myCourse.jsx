@@ -1,9 +1,10 @@
 import { ArrowBackIcon } from '@chakra-ui/icons'
-import { Avatar, Box, Button, Heading, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Heading, Image, Text } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import MyLearingCourse from '../components/myLearingCourse/myLearingCourse'
+import { Logo } from '../assets'
 
 const MyCourse = () => {
 
@@ -15,13 +16,14 @@ const MyCourse = () => {
         <Box width={'100%'}  display={'flex'} p={10} alignItems={'center'} justifyContent={'center'} flexDirection={'column'}>
 
             <Box w={{base: '100%' , md: '70%'}} bg={'white'} borderColor={'gray.400'}  borderBottom={'none'}>
-                <Box display={'flex'} alignItems={'center'} border={'1px'} justifyContent={'space-between'} flexDirection={{base: 'column' ,md: 'row'}} borderBottom={'1px'} borderColor={'gray.400'}>
-                    <Box display={'flex '} alignItems={'center'} gap={5}  p={{base: 10,md:20}} flexDirection={{base: 'column' , md: 'row'}}> 
-                        <Avatar width={'70px'} h={'70px'} />
+                <Box display={'flex'} alignItems={'center'} border={'1px'} justifyContent={'center'} flexDirection={{base: 'column' ,md: 'row'}} borderBottom={'1px'} borderColor={'gray.400'}>
+                    <Box display={'flex '} alignItems={'center'}   gap={5}  p={10} flexDirection={{base: 'column' , md: 'row'}}> 
+                        {/* <Avatar width={'70px'} h={'70px'} />
                         <Box textAlign={{base: 'center' , md: 'start'}}>
                             <Heading  fontSize={'25px'}>MOdevco</Heading>
                             <Text color={'gray'}>Web Designer & Best-Selling Instructor</Text>
-                        </Box>
+                        </Box> */}
+                        <Image width={'500px'} src={Logo} />
                     </Box>
                 </Box>
                 <Box>
@@ -38,7 +40,7 @@ const MyCourse = () => {
                                 <MyLearingCourse />
                             </TabPanel>
                             <TabPanel>
-                                <Heading color={'gray'} userSelect={'none'}>Hozircha bunday bo'lim mavjud emas :(</Heading>
+                                <Heading textAlign={'center'} color={'gray'} fontSize={'30px'} userSelect={'none'}>Hozircha bunday bo'lim mavjud emas :(</Heading>
                             </TabPanel>
                         </TabPanels>
                     </Tabs>

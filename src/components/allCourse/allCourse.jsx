@@ -39,8 +39,10 @@ const AllCourse = ({data , loading , setDataVal}) => {
     const s = date.getSeconds()
     const ms = date.getMilliseconds()
     const [vr , setVr] = useState(false)
-    console.log(data);
+    const [loading2 , setLoading2] = useState(false)
+
     const handleSubmit = () => {
+        setLoading2(true)
         axios.post(`${api}api/reception/new`,{
             "courseID": courseId,
             "description": value,
@@ -55,6 +57,7 @@ const AllCourse = ({data , loading , setDataVal}) => {
             setResponse(res.data.message)
             onClose()
             setVr(true)
+            setLoading2(false)
             
         })
     }
@@ -146,11 +149,19 @@ const AllCourse = ({data , loading , setDataVal}) => {
                                                 </FormControl>
                                             </ModalBody>
                                             <ModalFooter>
-                                                <Button  width={'100%'} bg={'#000'} color={'white'} h={'50px'} _hover={{bg: '#001'}} mr={3} onClick={() => {
+                                               {!loading2 && <Button  width={'100%'} bg={'#000'} color={'white'} h={'50px'} _hover={{bg: '#001'}} mr={3} onClick={() => {
                                                     handleSubmit()
                                                 }}>
                                                     Tasdiqlash
-                                                </Button>
+                                                </Button>}
+                                                {loading2 && <Button
+                                                    isLoading
+                                                    loadingText='Tasdiqlamoqda...'
+                                                    colorScheme='teal'
+                                                    variant='outline'
+                                                    width={'100%'}
+                                                >
+                                                </Button>}
                                             </ModalFooter>
                                             </ModalContent>
                                         </Modal>}

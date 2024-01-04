@@ -15,7 +15,7 @@ const MyLearingCourse = () => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then((res) => {
-            console.log(res.data.data);
+            // console.log(res.data.data);
             setData(res.data.data)
             setLoading(false)
         })
@@ -23,7 +23,7 @@ const MyLearingCourse = () => {
 
 
   return (
-    <Box  p={5} display={'flex'}  gap={5}  flexWrap={'wrap'} >
+    <Box  p={5} display={'flex'}  gap={5}  flexWrap={'wrap'} justifyContent={{base: 'center' , md: ''}}>
         <Box  width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
             {loading && <Box width={'100%'} display={'flex'} alignItems={'center'} justifyContent={'center'} minH={'100%'}>
                 <Box width={'200px'}>
@@ -31,6 +31,7 @@ const MyLearingCourse = () => {
                 </Box>
             </Box>}
         </Box>
+
         {!loading && data.map((item , i) => (
             <Card maxW='sm'  className='zigzak' borderBottom={'none'} rounded={'0'} mt={10}>
                 <Box textAlign={'center'} fontSize={'20px'} rounded={'8px'} fontWeight={'400'} pt={1} width={'100%'}>
@@ -57,7 +58,7 @@ const MyLearingCourse = () => {
                 </CardFooter>
             </Card>
         ))}
-    
+        {!data.length &&<Heading textAlign={'center'} fontSize={'30px'} userSelect={'none'} color={'gray'}>Sizda kurslar mavjud emas</Heading>}
     </Box>
   )
 }

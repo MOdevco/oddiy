@@ -1,7 +1,7 @@
 import { Box, Button } from '@chakra-ui/react'
 import Navbar from './components/navbar/navbar'
 import Footer from './components/footer/footer'
-import { Route, Router, Routes } from 'react-router-dom'
+import { Route, Router, Routes, useNavigate } from 'react-router-dom'
 import Home from './pages/home'
 import Register from './pages/register'
 import NoteFount from './pages/404'
@@ -18,7 +18,7 @@ import MyCourse from './pages/myCourse'
 function App() {
   const [dataVal ,setDataVal] = useState('')
   const [scroll, setScroll] = useState(false);
-  
+  const navigation = useNavigate()
   useEffect(() => {
     window.addEventListener("scroll", (e) => {
       if (window.scrollY > 10) {
@@ -28,12 +28,21 @@ function App() {
       }
     });
   }, []);
+  
   const handleScroll = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
+
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      navigation('/home')
+    } else {
+      navigation('/')
+    }
+  } ,[localStorage.getItem('token')])
 
 
   useEffect(() => {

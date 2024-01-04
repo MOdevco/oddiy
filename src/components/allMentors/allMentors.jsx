@@ -22,7 +22,7 @@ const AllMentors = ({loading}) => {
     } ,[])
 
   return (
-    <Box  minHeight={'100%'} bg={'#F0F2F5'}>
+    <Box  minHeight={'100%'} bg={'#F0F2F5'} mt={10}>
         <Box display={'flex'}className='wrapper' p={10} justifyContent={'center'} gap={10} width={'100%'}  alignItems={'center'} flexDirection={'column'}>
             <Box>
                 <Heading>Barcha mentorlar</Heading>
@@ -33,11 +33,11 @@ const AllMentors = ({loading}) => {
                  <Lottie animationData={groovyWalkAnimation2} loop={true} />
                 </Box>
             </Box>}
-           {!loading && <Box display={'flex'} justifyContent={{base: 'center' , md: 'flex-start'}} alignItems={'center'} gap={10} flexWrap={'wrap'}>
+           {!loading && <Box display={'flex'} justifyContent={{base: 'center' , md: 'center'}} alignItems={'center'} gap={10} flexWrap={'wrap'}>
                 {data.map((item,i) => (
-                    <Card maxW='sm'>
+                    <Card h={'100%'}>
                         <CardBody>
-                            <ImageGet id={item.employee.photo.id} />
+                            <ImageGet  id={item.employee.photo.id} />
                             <Stack mt='6' spacing='3'>
                             <Heading textAlign={'center'} size='md'>{item.employee.face.firstname} {item.employee.face.lastname}</Heading>
                             <Text textAlign={'center'} fontWeight={'500'} fontSize={'20px'}>

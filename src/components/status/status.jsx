@@ -6,7 +6,7 @@ import { api } from '../../api/api'
 
 const Status = () => {
     const [data , setData] = useState([])
-    console.log(data.length);
+    // console.log(data.length);
     useEffect(() => {
         axios.get(`${api}api/course-type/` , {
             headers: {
