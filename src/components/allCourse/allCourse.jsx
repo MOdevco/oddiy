@@ -63,9 +63,9 @@ const AllCourse = ({data , loading , setDataVal}) => {
     }
 
   return (
-    <Box width={'100%'}  p={20} bg={'#F0F2F5'} display={'flex'}>
-        <Box className='wrapper' >
-            <Box textAlign={'center'} >
+    <Box width={'100%'} pb={10}   bg={'#F0F2F5'} display={'flex'}>
+        <Box width={'100%'}>
+            <Box textAlign={'center'} p={5}>
                 <Heading>Bizdagi mavjud barcha kurslar</Heading>
             </Box>
 
@@ -91,23 +91,22 @@ const AllCourse = ({data , loading , setDataVal}) => {
                 {data && data.map((item , i) => {
                     if(item.course.status === true) 
                         return (
-                        <Box>
-                            <Card maxW='sm' cursor={'pointer'} className='CardEffect' height={'100%'} width={'100%'} position={'relative'}>
+                        <Box width={'100%'} p={{base: 3 , md: 10}} pt={0} >
+                            <Card cursor={'pointer'} className='CardEffect' height={'100%'} width={'100%'}  position={'relative'}>
                                 <CardBody position={'relative'}>
                                     <Image src={`${api}api/image/?id=${item.course.previewPhoto.id}`}
                                     className='cardImg'
                                     width={'100%'}
-                                    h={'250px'}
-                                    objectFit={'cover'}
+                                    objectFit={{base: 'contain' , md: 'cover'}}
                                     />
-                                        <Button ml={{base: 0 , md: 5}}  onClick={() => setDataVal(item)} bg={'none'} _hover={{bg: ''}} border={'1px'}  borderColor={'white'} color={'white'} position={'absolute'} top={20} className='btn' width={{base: '85%' , md:'80%'}} h={'50px'}  >
+                                        <Button ml={{base: 2 , md: 4}}  onClick={() => setDataVal(item)} bg={'none'} _hover={{bg: ''}} border={'1px'}  borderColor={'white'} color={'white'} position={'absolute'} top={{base: 12 , md: 12}} className='btn' width={{base: '85%' , md:'80%'}} h={'50px'}  >
                                             <Link to={'/fullDesc'}>
                                                 Batafsil
                                             </Link>
                                         </Button>
                                     <Stack mt='6' spacing='3'>
-                                    <Box display={'flex'} justifyContent={'space-between'}>
-                                        <Badge textAlign={'center'} width={'40%'} height={'100%'} variant='outline' colorScheme='green'>
+                                    <Box display={'flex'} justifyContent={'space-between'} flexDirection={{base: 'column' , md: 'row'}}>
+                                        <Badge textAlign={'center'} width={{base:'100%' , md: '40%'}} height={'100%'} variant='outline' colorScheme='green'>
                                             {item.course.name}
                                         </Badge>
                                         <Text fontWeight={'bold'} color={'orange'}>
@@ -126,16 +125,16 @@ const AllCourse = ({data , loading , setDataVal}) => {
                                     </Stack>
                                 </CardBody>
                                 <Divider />
-                                <CardFooter position={'relative'} p={0}>
-                                    <Box display={'flex'} alignItems={'center'} width={'100%'} gap={5} p={5}>
+                                <CardFooter position={'relative'} p={0} display={'flex'} flexDirection={'column'} >
+                                    <Box display={'flex'} alignItems={'center'} width={'100%'} gap={5} p={5 }>
                                         <Avatar src={`${api}api/image/?id=${item.mentor.employee.photo.id}`} />
-                                        <Text fontSize={'20px'} fontWeight={'500'}>{item.mentor === null ? "O'qituvchi belgilanmagan" : `${item.mentor.employee.face.firstname} ${item.mentor.employee.face.lastname}` } </Text>
+                                        <Text fontSize={{base: '13px' , md: '20px'}} fontWeight={'500'}>{item.mentor === null ? "O'qituvchi belgilanmagan" : `${item.mentor.employee.face.firstname} ${item.mentor.employee.face.lastname}` } </Text>
                                     </Box>
-                                    <Box onClick={() => {
+                                    <Box display={{base: 'none' , md: 'block'}}  onClick={() => {
                                         onOpen()
                                         setCourseId(item.course.id)
                                     }} position={'absolute'} borderBottomLeftRadius={'8px'}borderBottomRightRadius={'8px'} className='cardFooterBtn' lang='0' top={0} width={'100%'} h={'0%'} bg={'black'}>
-                                        <Heading fontSize={'20px'} color={'white'}>Kursga yozilish</Heading>
+                                        <Heading fontSize={'20px'} color={'white'} textAlign={'center'} pt={5}>Kursga yozilish</Heading>
                                        { <Modal isOpen={isOpen} onClose={onClose}>
                                             <ModalOverlay />
                                             <ModalContent>
@@ -166,6 +165,43 @@ const AllCourse = ({data , loading , setDataVal}) => {
                                             </ModalContent>
                                         </Modal>}
                                     </Box>
+
+                                    <Box display={{base: 'block' , md: 'none'}}  onClick={() => {
+                                        onOpen()
+                                        setCourseId(item.course.id)
+                                    }} borderBottomLeftRadius={'8px'} borderBottomRightRadius={'8px'} position={'absolute'} bottom={0}   lang='0' top={20} width={'100%'} h={'70%'}background={'black'}>
+                                        <Heading fontSize={'20px'} color={'#fff'} textAlign={'center'} pt={5} >Kursga yozilish</Heading>
+                                       { <Modal isOpen={isOpen} onClose={onClose}>
+                                            <ModalOverlay />
+                                            <ModalContent>
+                                            <ModalHeader>Kursga yozilish</ModalHeader>
+                                            <ModalCloseButton />
+                                            <ModalBody>
+                                                <Image src={Logo}></Image>
+                                                <FormControl mt={5}>
+                                                    <FormLabel>Xabar qoldiring (majburi emas)</FormLabel>
+                                                    <Textarea onChange={(e) => setValue(e.target.value)} placeholder={'xabar...'} />
+                                                </FormControl>
+                                            </ModalBody>
+                                            <ModalFooter>
+                                               {!loading2 && <Button  width={'100%'} bg={'#000'} color={'white'} h={'50px'} _hover={{bg: '#001'}} mr={3} onClick={() => {
+                                                    handleSubmit()
+                                                }}>
+                                                    Tasdiqlash
+                                                </Button>}
+                                                {loading2 && <Button
+                                                    isLoading
+                                                    loadingText='Tasdiqlamoqda...'
+                                                    colorScheme='teal'
+                                                    variant='outline'
+                                                    width={'100%'}
+                                                >
+                                                </Button>}
+                                            </ModalFooter>
+                                            </ModalContent>
+                                        </Modal>}
+                                    </Box>
+                                  
                                 </CardFooter>
                             </Card>    
                     </Box>

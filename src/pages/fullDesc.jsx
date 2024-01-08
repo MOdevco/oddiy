@@ -128,7 +128,7 @@ const FullDesc = ({ dataVal }) => {
           </TabPanel>
         </TabPanels>
       </Tabs>
-      <Link to={'/'}>
+      <Link to={'/home'}>
         <Button display={'flex'} alignItems={'center'} gap={1} fontSize={'20px'} mb={20} h={'50px'} bg={'#000'} _hover={{bg: ''}} width={'300px'} color={'#fff'}><ArrowBackIcon /> Ko'proq kurga yozilish</Button>
       </Link>
 

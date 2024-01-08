@@ -11,8 +11,8 @@ const EnterWork = () => {
         <Box className='wrapper' display={'flex'} justifyContent={'center'} alignItems={'center'}>
             <Box className='Responsive' display={'flex'} alignItems={'center'} gap={'20px'} justifyContent={'space-evenly'} width={{base: '100%' , md: '75%'}}>
                 <Box className='bgImg' width={'100%'} display={'flex'} flexDirection={'column'} alignItems={'self-start'} gap={'20px'} p={'20px'} color={'white'}  bg={'#000'}>
-                    <Heading>Malumotlar To’iq holda</Heading>
-                    <Text maxW={'400px'}>Agarda siz shartlarga to’g’ri kelgan holatda malumotlaringiz yetarli bo’lsa bizga arizani berishingiz mumkin bo’ladi.</Text>
+                    <Heading>Ma'lumotlar To'liq holda</Heading>
+                    <Text maxW={'400px'}>Agarda siz shartlarga to’g’ri kelgan holatda ma'lumotlaringiz yetarli bo’lsa bizga arizani berishingiz mumkin bo’ladi.</Text>
                     <Link to={'/aplication'}>
                         <Button _hover={{bg: ''}} bg={'white'}  display={'flex'} alignItems={'center'} gap={2 } color={'#000'}>Ariza Qoldirish<FaArrowRightLong fontSize={'20px'} className='right' /></Button>
                     </Link>
@@ -22,14 +22,14 @@ const EnterWork = () => {
                 <Box className='bgImg' width={'100%'} display={'flex'} flexDirection={'column'} alignItems={'self-start'} gap={'20px'} p={'20px'} color={'black'} bg={'#ffff'}>
                     <Heading >Ishga kirish uchun tanishing</Heading>
 
-                    <Box display={'flex'} gap={2}>
+                    <Box display={'flex'} gap={{base: 5 , md: 2}} flexDirection={{base: 'column' , md: 'row'}} >
                         <Box  flexDirection={{base: 'column' , md: 'row'}} alignItems={{base: 'flex-start' , md: 'center'}} gap={5} width={'100%'}>
                             <Box display={'flex'} alignItems={'center'} gap={2}>
-                                <Heading width={'50px'} h={'50px'} bg={'#EBEBFF'} textAlign={'center'} rounded={'50%'} color={'#564FFD'}>1</Heading>
+                                <Heading width={{base: '40px' , md: '50'}} h={{base: '40px' , md: '50'}} bg={'#EBEBFF'} textAlign={'center'} rounded={'50%'} color={'#564FFD'}>1</Heading>
                                 <Text fontSize={'18px'} fontWeight={'500'}>Yonalish sertifikati</Text>
                             </Box>
                             <Box display={'flex'} alignItems={'center'} gap={2} mt={5}>
-                                <Heading width={'50px'} h={'50px'} bg={'#FFF0F0'} textAlign={'center'} rounded={'50%'} color={'#FF6636'}>2</Heading>
+                                <Heading width={{base: '40px' , md: '50'}} h={{base: '40px' , md: '50'}} bg={'#FFF0F0'} textAlign={'center'} rounded={'50%'} color={'#FF6636'}>2</Heading>
                                 <Text fontSize={'18px'} fontWeight={'500'}>Yoshingiz 18dan katta bo’lish</Text>
                             </Box>
                         </Box>
@@ -37,12 +37,12 @@ const EnterWork = () => {
                         <Box  flexDirection={{base: 'column' , md: 'row'}} alignItems={{base: 'flex-start' , md: 'center'}} gap={5} width={'100%'}>
 
                             <Box display={'flex'} alignItems={'center'} gap={2}>
-                                <Heading width={'50px'} h={'50px'} bg={'#FFF0F0'} textAlign={'center'} rounded={'50%'} color={'#E34444'}>3</Heading>
+                                <Heading  width={{base: '40px' , md: '50'}} h={{base: '40px' , md: '50'}} bg={'#FFF0F0'} textAlign={'center'} rounded={'50%'} color={'#E34444'}>3</Heading>
                                 <Text fontSize={'18px'} fontWeight={'500'}>Dars o’tish metidikasi</Text>
                             </Box>
 
                             <Box display={'flex'} alignItems={'center'} gap={2} mt={5}>
-                                <Heading width={'50px'} h={'50px'} bg={'#E1F7E3'} textAlign={'center'} rounded={'50%'} color={'#23BD33'}>4</Heading>
+                                <Heading  width={{base: '40px' , md: '50'}} h={{base: '40px' , md: '50'}} bg={'#E1F7E3'} textAlign={'center'} rounded={'50%'} color={'#23BD33'}>4</Heading>
                                 <Text fontSize={'18px'} fontWeight={'500'}>2 yildan oshiq tajriba</Text>
                             </Box>
                         </Box>

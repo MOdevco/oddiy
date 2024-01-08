@@ -28,6 +28,7 @@ const FutureAllCourse = ({data , loading}) => {
                             direction={{ base: 'column', sm: 'row' }}
                             overflow='hidden'
                             variant='outline'
+                            // width={{base: '100%' , md: ''}}
                             >
                                 <ImageGet id={item.course.previewPhoto.id}/>
     

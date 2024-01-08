@@ -47,7 +47,7 @@ const Home = ({setDataVal}) => {
         <Status />
       </Box>
 
-      <Box>
+      <Box width={'100%'}>
         <AllCourse data={data} loading={loading} setDataVal={setDataVal} />
       </Box>
 

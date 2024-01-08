@@ -47,12 +47,12 @@ const TopSwiper = () => {
         >
           {data.map((item) => (
               <SwiperSlide className='slider'>
-                  <Image src={`${api}api/image/?id=${item.photo.id}`}></Image>
-                  <Box w={'150px'} h={'30px'} bg={'orange'}  borderBottomLeftRadius={'10px'} display={'flex'} alignItems={'center'} justifyContent={'center'} position={'fixed'} top={0} right={0} color={'#000'} fontWeight={'500'}>Yangiliklar</Box>
+                  <Image src={`${api}api/image/?id=${item.photo.id}`} objectFit={'cover'} h={'100vh'} width={'100%'}></Image>
+                  <Box w={'150px'} h={'30px'} bg={'orange'}  borderBottomLeftRadius={'10px'} display={'flex'} alignItems={'center'} justifyContent={'center'} position={'fixed'} top={{base: 4 , md: 0}} right={0} color={'#000'} fontWeight={'500'}>Yangiliklar</Box>
                   <Box position={'absolute'} color={'#fff'} left={4} bottom={6} textAlign={'left'}>
-                    <Text fontSize={'40px'} fontWeight={'700'}>{item.name}</Text>
-                    <Text fontSize={'30px'} fontWeight={'700'}>{item.fullDesc}</Text>
-                    <Text fontSize={'30px'} fontWeight={'700'}>{item.shortDesc}</Text>
+                    <Text fontSize={{base: '25px' , md: '40px'}} fontWeight={'700'}>{item.name}</Text>
+                    <Text fontSize={{base: '15px' , md: '30px'}} fontWeight={'700'}>{item.fullDesc}</Text>
+                    <Text fontSize={{base: '15px' , md: '30px'}} fontWeight={'700'}>{item.shortDesc}</Text>
                   </Box>
               </SwiperSlide>
           ))}

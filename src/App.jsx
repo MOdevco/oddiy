@@ -66,7 +66,7 @@ function App() {
         </Box>
       )}
       {/* for navbar */}
-      <Box mb={'78px'}>
+      <Box mb={{base:'20px' , md: '78px'}}>
         <Navbar />
       </Box>
 
