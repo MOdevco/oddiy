@@ -22,7 +22,7 @@ const Register = () => {
     // const val = otpValue.one+ otpValue.two+otpValue.three+otpValue.four+otpValue.five+otpValue.six
     // const toast = useToast();
     // const [validate , setValidate] = useState(false);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     // const [des , setDes] = useState(false)
     // const codePre = ["90","91","93","94","95","97","98","33","88","73","71","50","78","99"]
     // const [loading , setLoading] = useState(false)
@@ -41,6 +41,17 @@ const Register = () => {
     //     mask: "+998 (__) ___-__-__",
     //     replacement: { _: /\d/ },
     // });
+    const [value , setValue] = useState({username: '' , password: ''})
+    const handleLogin = () => {
+      const formData = new FormData()
+      formData.append('password' , value.password)
+      formData.append('username' , value.username)
+      axios.post(`${api}api/auth/login`,formData)
+      .then((res) => {
+        console.log(res.data);
+        navigate('/')
+      })
+    }
 
   
 
@@ -63,19 +74,19 @@ const Register = () => {
               <Box>
                 <FormControl>
                   <FormLabel>Username</FormLabel>
-                  <Input type='text' placeholder='username...'/>
+                  <Input onChange={(e) => setValue({...value , username: e.target.value})} type='text' placeholder='username...'/>
                 </FormControl>
                 <FormControl>
                   
                   <FormLabel>Password</FormLabel>
                     <InputGroup size='md'>
-                      <Input
+                      <Input onChange={(e) => setValue({...value , password: e.target.value})}
                         pr='4.5rem'
                         type={show ? 'text' : 'password'}
                         placeholder='password...'
                       />
                       <InputRightElement width='4.5rem'>
-                        <Button h='1.75rem' size='sm' onClick={handleClick}>
+                        <Button  h='1.75rem' size='sm' onClick={handleClick}>
                           {show ? <ViewOffIcon /> :  <ViewIcon />}
                         </Button>
                       </InputRightElement>
@@ -88,7 +99,7 @@ const Register = () => {
               </Text>
 
               <Box>
-                <Button width={'100%'} bg={'#000'} _active={{bg: ''}} _hover={{bg: ''}} color={'white'}>Tasdiqlash</Button>
+                <Button onClick={handleLogin} width={'100%'} bg={'#000'} _active={{bg: ''}} _hover={{bg: ''}} color={'white'}>Tasdiqlash</Button>
               </Box>
 
             </Box>

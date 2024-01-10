@@ -36,13 +36,13 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    if(localStorage.getItem('token')) {
-      navigation('/home')
-    } else {
-      navigation('/')
-    }
-  } ,[localStorage.getItem('token')])
+  // useEffect(() => {
+  //   if(localStorage.getItem('token')) {
+  //     navigation('/home')
+  //   } else {
+  //     navigation('/')
+  //   }
+  // } ,[localStorage.getItem('token')])
 
 
   useEffect(() => {
@@ -73,8 +73,8 @@ function App() {
       {/* for routes */}
       <Box>
         <Routes>
-          <Route path='/home' element={<Home setDataVal={setDataVal} />}></Route>
-          <Route path='/' element={<Register />}></Route>
+          <Route path='/' element={<Home setDataVal={setDataVal} />}></Route>
+          <Route path='/register' element={<Register />}></Route>
           <Route path='/allRegister' element={<AllRegiste />}></Route>
           {/* <Route path='/contact' element={<Contact  />}></Route> */}
           <Route path='/aplication' element={<Aplication  />}></Route>
